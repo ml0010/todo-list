@@ -19,6 +19,7 @@ export const TodoForm = (props) => {
     return (
         <form onSubmit={handleSubmit}>
             <input value={todo} onChange={(e)=>setTodo(e.target.value)} type='text' placeholder='Enter a task' required></input>
+            <button type='submit'>ADD</button>
         </form>
     )
 }

@@ -1,0 +1,12 @@
+.todo {
+    display: flex;
+    margin: 10px;
+}
+
+.todo-text {
+    display: flex;
+}
+
+.todo .inputbox {
+    width: 200px;
+}

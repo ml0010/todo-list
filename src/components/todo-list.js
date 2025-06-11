@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import '../styles/todo-list.css'
 
 export const TodoList = (props) => {
     const [ editItemId, setEditItemId ] = useState(null);
@@ -23,12 +24,14 @@ export const TodoList = (props) => {
             <div key={todo.id} className='todo'>
                 <div className='todo-text'>
                     <input type='checkbox'></input>
+                    <div className='inputbox'>
                     {todo.id === editItemId ? 
                         <form onSubmit={()=>handleSubmitEdit(todo)}>
                             <input value={editText} onChange={(e)=>setEditText(e.target.value)} type='text'></input>
                         </form> :
                         <>{todo.text}</>
                     }
+                    </div>
                 </div>
                 <div className='todo-actions'>
                     {todo.id === editItemId ? 

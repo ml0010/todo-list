@@ -1,35 +1,20 @@
-import { useState } from 'react';
 import './App.css';
-import TodoForm from './components/TodoForm';
-import TodoList from './components/TodoList';
+import Todo from './pages/todo';
 
 function App() {
-    const [ todos, setTodos ] = useState([]);
-    
-    const addTodoToList = (newTodo) => {
-        setTodos([...todos, newTodo]);
-    };
-    const handleDelete = (id) => {
-        let updateTodos = todos.filter((todo) => todo.id !== id);
-        setTodos(updateTodos);
-    };
-    const handleSubmitEdit = (newTodo) => {
-        const todoIndex = todos.findIndex(todo => todo.id === newTodo.id);
-        if (todoIndex !== -1) {
-            const updateTodos = [...todos];
-            updateTodos[todoIndex] = newTodo;
-            setTodos(updateTodos);
-        }
-    };
+
 
     return (
-        <>
-            <div className="App">
-                <h1>To Do List</h1>
-                <TodoForm onSubmit={addTodoToList} />
+        <div className="App">
+            <div>
+                <h1>Calendar</h1>
+
             </div>
-            <TodoList todos={todos} deleteTodo={handleDelete} editTodo={handleSubmitEdit}/>
-        </>
+            <div className='todoList'>
+                <Todo></Todo>
+            </div>
+        </div>
+            
     );
 }
 
