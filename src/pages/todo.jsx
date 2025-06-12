@@ -30,7 +30,7 @@ export const Todo = () => {
 
     return (
         <div className='todo-box'>
-            <div className='date'>
+            <div className='date-selected'>
                 {dateSelected.toDateString()}
             </div>
             <h1>To Do List</h1>

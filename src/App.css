@@ -1,11 +1,14 @@
 :root {
-    --dark: rgb(34, 32, 30);
-    --grey: rgba(191, 173, 152, 0.098);
-    --gold: rgba(249, 196, 36, 0.918);
+    --dark: rgb(9, 15, 22);
+    --grey: rgba(55, 75, 100, 0.401);
+    --gold: rgb(246, 192, 32);
     --cream: rgb(229, 223, 223);
+    --red: rgb(255, 128, 128);
+    --blue: rgb(151, 165, 255);
 }
 
 .App {
+    font-family: 'Helvetica';
     display: flex;
     flex-direction: row;
     background-color: var(--dark);
@@ -17,7 +20,6 @@
 .pageLeft {
     width: 30%;
     padding: 30px;
-    background-color: var(--grey);
 }
 .pageRight {
     width: 70%;

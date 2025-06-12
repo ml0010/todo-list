@@ -39,8 +39,9 @@ li {
     margin: 0 auto;
     font-size: calc(16px + (21 - 16) * ((100vw - 300px) / (1600 - 300)));
     border-radius: 20px;
-    width: 32px;
-    height: 32px;
+    width: 35px;
+    height: 35px;
+    
 }
 .date.selected  {
     background-color: var(--gold);
@@ -48,9 +49,9 @@ li {
 }
 
 ol li:nth-child(7n) {
-    color: rgb(255, 128, 128);
+    color: var(--red);
 }
 ol li:nth-child(7n-1) {
-    color: rgb(151, 165, 255);
+    color: var(--blue);
 }
 

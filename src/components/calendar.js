@@ -80,7 +80,6 @@ export const Calendar = () => {
                     </li>
                 ))}
             </ol>
-            <p>DATE SELECTED: {dateSelected.toDateString()}</p>
         </div>
     )
 }
