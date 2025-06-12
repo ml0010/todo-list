@@ -1,7 +1,7 @@
 import './App.css';
 import { DateContextProvider } from './contexts/date-context';
-import Calendar from './components/calendar';
-import Clock from './components/clock';
+import Calendar from './pages/calendar';
+import Clock from './pages/clock';
 import Todo from './pages/todo';
 
 function App() {

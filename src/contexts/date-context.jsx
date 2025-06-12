@@ -7,6 +7,7 @@ export const DateContextProvider = (props) => {
     const [ dateSelected, setDateSelected ] = useState(new Date());
 
     const contextValue = { dateSelected, setDateSelected };
+    
     return (
         <DateContext.Provider value={contextValue}>{props.children}</DateContext.Provider>
     )
