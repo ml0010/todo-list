@@ -1,8 +1,12 @@
 .todo {
     background-color: var(--grey);
     padding: 10px;
+    margin: 5px;
     border-radius: 10px;
+    font-size: 18px;
+    width: 42vw;
     display: flex;
+    justify-content: space-between;
 }
 
 .todo-text {
@@ -12,12 +16,21 @@
 }
 
 .todo .inputbox {
-    width: 200px;
     text-align: left;
 }
-
+.todo .inputbox input {
+    border: none;
+    width: 35vw;
+    height: 25px;
+}
+.todo svg {
+    padding-right: 5px;
+}
+.todo svg:hover {
+    color: var(--gold);
+}
 
 .todo:has([type=checkbox]:checked) {
-  text-decoration: line-through;
-  color: grey;
+    text-decoration: line-through;
+    color: grey;
 }

@@ -7,3 +7,6 @@
     font-size: 40px;
     color: var(--gold);
 }
+.todo-list {
+    width: 45vw;
+}

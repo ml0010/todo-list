@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import '../styles/todo-list.css'
+import { FloppyDisk, Pencil, Trash } from 'phosphor-react';
 
 export const TodoList = (props) => {
 
@@ -27,11 +28,11 @@ export const TodoList = (props) => {
         todos.map((todo) =>
             <div key={todo.id} className='todo'>
                 <div className='todo-text'>
-                    <input type='checkbox'></input>
+                    <input className='checkbox' type='checkbox'></input>
                     <div className='inputbox'>
                     {todo.id === editItemId ? 
                         <form onSubmit={()=>handleSubmitEdit(todo)}>
-                            <input value={editText} onChange={(e)=>setEditText(e.target.value)} type='text'></input>
+                            <input value={editText} onChange={(e)=>setEditText(e.target.value)} maxlength='50' type='text'></input>
                         </form> :
                         <>{todo.text}</>
                     }
@@ -39,10 +40,10 @@ export const TodoList = (props) => {
                 </div>
                 <div className='todo-actions'>
                     {todo.id === editItemId ? 
-                        <button onClick={()=>handleSubmitEdit(todo)}>Submit Edits</button> : 
-                        <button onClick={()=>handleEdit(todo)}>Edit</button>
+                        <FloppyDisk size={23} onClick={()=>handleSubmitEdit(todo)} /> : 
+                        <Pencil size={23} onClick={()=>handleEdit(todo)} />
                     }
-                    <button onClick={()=>handleDelete(todo.id)}>Delete</button>
+                    <Trash size={23} onClick={()=>handleDelete(todo.id)} />
                 </div>
             </div>
         )

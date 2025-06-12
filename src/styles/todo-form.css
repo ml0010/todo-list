@@ -1,6 +1,7 @@
 .todoForm {
     padding: 10px;
     border-radius: 10px;
+    font-size: 20px;
 }
 .todoForm form {
     display: flex;
@@ -8,10 +9,11 @@
     align-items: center;
 }
 .todoForm input {
-    width: 250px;
-    height: 25px;
+    width: 45vw;
+    height: 35px;
     border-radius: 5px;
     border: none;
+    font-size: 20px;
 }
 .todoForm button {
     float: right;

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import '../styles/calendar.css'
 import { DateContext } from '../contexts/date-context';
+import { CaretDoubleLeft, CaretDoubleRight } from 'phosphor-react';
 
 
 export const Calendar = () => {
@@ -65,9 +66,9 @@ export const Calendar = () => {
     return (
         <div className='calendar'>
             <div className='month-year'>
-                <button onClick={() => prevMonth()}>before</button>
-            {getMonth()} {getYear()}
-                <button onClick={() => nextMonth()}>after</button>
+                <CaretDoubleLeft size={23} onClick={() => prevMonth()} />
+                <p>{getMonth()} {getYear()}</p>
+                <CaretDoubleRight size={23} onClick={() => nextMonth()} />
             </div>
             <ul className='days'>
                 {DAYS.map((day, index) => 

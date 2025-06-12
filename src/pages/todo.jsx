@@ -33,9 +33,11 @@ export const Todo = () => {
             <div className='date-selected'>
                 {dateSelected.toDateString()}
             </div>
-            <h1>To Do List</h1>
-            <TodoForm addTodoToList={addTodoToList} />
-            <TodoList todos={todos} deleteTodo={handleDelete} editTodo={handleSubmitEdit}/>
+            <div className='todo-list'>
+                <h1>To Do List</h1>
+                <TodoForm addTodoToList={addTodoToList} />
+                <TodoList todos={todos} deleteTodo={handleDelete} editTodo={handleSubmitEdit}/>
+            </div>
         </div>
     )
 }

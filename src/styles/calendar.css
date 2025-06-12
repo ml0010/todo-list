@@ -17,6 +17,9 @@
     background-color: var(--cream);
     color: var(--dark);
 }
+.month-year p {
+    width: 180px;
+}
 
 .days li {
     margin-bottom: 10px;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import '../styles/todo-form.css';
+import { ListPlus } from 'phosphor-react';
 
 export const TodoForm = (props) => {
 
@@ -22,8 +23,8 @@ export const TodoForm = (props) => {
     return (
         <div className='todoForm'>
             <form onSubmit={handleSubmit}>
-                <input value={todo} onChange={(e)=>setTodo(e.target.value)} type='text' placeholder='Enter a task' required></input>
-                <button type='submit'>ADD</button>
+                <input value={todo} onChange={(e)=>setTodo(e.target.value)} type='text' placeholder='Enter a task' maxlength='50' required></input>
+                <button type='submit'><ListPlus size={45} /></button>
             </form>
         </div>
     )
