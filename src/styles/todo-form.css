@@ -1,0 +1,19 @@
+.todoForm {
+    background-color: rgba(191, 173, 152, 0.098);
+    padding: 10px;
+    border-radius: 10px;
+}
+.todoForm form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.todoForm input {
+    width: 250px;
+    height: 25px;
+    border-radius: 5px;
+    border: none;
+}
+.todoForm button {
+    float: right;
+}

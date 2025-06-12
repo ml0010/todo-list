@@ -1,3 +1,15 @@
 .App {
   text-align: center;
+  background-color: rgb(34, 32, 30);
+  color: white;
+  height: 100vh;
+}
+button {
+    border: none;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 8px;
+    height: 25px;
+    width: 50px;
+    font-size: 13px;
 }

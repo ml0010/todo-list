@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import '../styles/todo-list.css'
 
 export const TodoList = (props) => {
+
+    const { todos, deleteTodo, editTodo } = props;
     const [ editItemId, setEditItemId ] = useState(null);
     const [ editText, setEditText ] = useState('');
 
     const handleDelete = (todoId) => {
-        props.deleteTodo(todoId);
+        deleteTodo(todoId);
         setEditItemId(null);
     }
     const handleEdit = (todo) => {
@@ -16,11 +18,11 @@ export const TodoList = (props) => {
     const handleSubmitEdit = (todo) => {
         setEditItemId(null);
         todo.text = editText;
-        props.editTodo(todo);
+        editTodo(todo);
     };
 
     return (
-        props.todos.map((todo) =>
+        todos.map((todo) =>
             <div key={todo.id} className='todo'>
                 <div className='todo-text'>
                     <input type='checkbox'></input>

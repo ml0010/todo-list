@@ -1,12 +1,23 @@
 .todo {
+    background-color: rgba(191, 173, 152, 0.098);
+    padding: 10px;
+    border-radius: 10px;
     display: flex;
-    margin: 10px;
 }
 
 .todo-text {
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .todo .inputbox {
     width: 200px;
+    text-align: left;
+}
+
+
+.todo:has([type=checkbox]:checked) {
+  text-decoration: line-through;
+  color: grey;
 }

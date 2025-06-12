@@ -1,3 +1,4 @@
 .todo-box {
     display: grid;
+    justify-content: center;
 }

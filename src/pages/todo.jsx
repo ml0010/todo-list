@@ -17,7 +17,7 @@ export const Todo = () => {
         setTodos(updateTodos);
     };
     const handleSubmitEdit = (newTodo) => {
-        const todoIndex = todos.findIndex(todo => todo.id === newTodo.id);
+        const todoIndex = todos.findIndex((todo) => todo.id === newTodo.id);
         if (todoIndex !== -1) {
             const updateTodos = [...todos];
             updateTodos[todoIndex] = newTodo;
@@ -28,7 +28,7 @@ export const Todo = () => {
     return (
         <div className='todo-box'>
             <h1>To Do List</h1>
-            <TodoForm onSubmit={addTodoToList} />
+            <TodoForm addTodoToList={addTodoToList} />
             <TodoList todos={todos} deleteTodo={handleDelete} editTodo={handleSubmitEdit}/>
         </div>
     )
