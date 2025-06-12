@@ -1,5 +1,5 @@
 .todoForm {
-    background-color: rgba(191, 173, 152, 0.098);
+    background-color: var(--grey);
     padding: 10px;
     border-radius: 10px;
 }

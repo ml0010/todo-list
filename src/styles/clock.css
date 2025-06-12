@@ -1,6 +1,8 @@
 .clock {
+    padding: 10px;
+    margin-bottom: 30px;
 }
 .clock h1 {
-    color: rgba(249, 196, 36, 0.918);
-    font-size: 15px;
+    color: var(--gold);
+    font-size: 18px;
 }

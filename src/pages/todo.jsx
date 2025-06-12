@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react';
+import { DateContext } from '../contexts/date-context';
 import TodoForm from '../components/todo-form';
 import TodoList from '../components/todo-list';
 import '../styles/todo.css';
@@ -8,6 +9,8 @@ import '../styles/todo.css';
 export const Todo = () => {
 
     const [ todos, setTodos ] = useState([]);
+
+    const { dateSelected } = useContext(DateContext);
     
     const addTodoToList = (newTodo) => {
         setTodos([...todos, newTodo]);
@@ -27,6 +30,9 @@ export const Todo = () => {
 
     return (
         <div className='todo-box'>
+            <div className='date'>
+                {dateSelected.toDateString()}
+            </div>
             <h1>To Do List</h1>
             <TodoForm addTodoToList={addTodoToList} />
             <TodoList todos={todos} deleteTodo={handleDelete} editTodo={handleSubmitEdit}/>

@@ -1,0 +1,56 @@
+.calendar {
+    padding: 10px;
+}
+.calendar .month-year {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.calendar .date {
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+}
+.calendar .date:hover {
+    background-color: var(--cream);
+    color: var(--dark);
+}
+
+.days li {
+    margin-bottom: 10px;
+}
+
+ul, ol {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 1em;
+    margin: 0 auto;
+    max-width: 64em;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    margin: 0 auto;
+    font-size: calc(16px + (21 - 16) * ((100vw - 300px) / (1600 - 300)));
+    border-radius: 20px;
+    width: 32px;
+    height: 32px;
+}
+.date.selected  {
+    background-color: var(--gold);
+    color: var(--dark);
+}
+
+ol li:nth-child(7n) {
+    color: rgb(255, 128, 128);
+}
+ol li:nth-child(7n-1) {
+    color: rgb(151, 165, 255);
+}
+

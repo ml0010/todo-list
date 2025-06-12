@@ -1,8 +1,27 @@
+:root {
+    --dark: rgb(34, 32, 30);
+    --grey: rgba(191, 173, 152, 0.098);
+    --gold: rgba(249, 196, 36, 0.918);
+    --cream: rgb(229, 223, 223);
+}
+
 .App {
-  text-align: center;
-  background-color: rgb(34, 32, 30);
-  color: white;
-  height: 100vh;
+    display: flex;
+    flex-direction: row;
+    background-color: var(--dark);
+    color: var(--cream);
+    height: 100vh;
+    text-align: center;
+}
+
+.pageLeft {
+    width: 30%;
+    padding: 30px;
+    background-color: var(--grey);
+}
+.pageRight {
+    width: 70%;
+    padding: 30px;
 }
 button {
     border: none;

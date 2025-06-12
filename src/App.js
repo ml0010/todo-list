@@ -1,21 +1,22 @@
 import './App.css';
+import { DateContextProvider } from './contexts/date-context';
+import Calendar from './components/calendar';
 import Clock from './components/clock';
 import Todo from './pages/todo';
 
 function App() {
 
-
     return (
         <div className="App">
-            <div>
-                <Clock />
-            </div>
-            <div>
-                <h1>Calendar</h1>
-            </div>
-            <div className='todoList'>
-                <Todo />
-            </div>
+            <DateContextProvider>
+                <div className='pageLeft'>
+                    <Clock />
+                    <Calendar />
+                </div>
+                <div className='pageRight'>
+                    <Todo />
+                </div>
+            </DateContextProvider>
         </div>
             
     );

@@ -4,8 +4,10 @@ import '../styles/todo-list.css'
 export const TodoList = (props) => {
 
     const { todos, deleteTodo, editTodo } = props;
+    
     const [ editItemId, setEditItemId ] = useState(null);
     const [ editText, setEditText ] = useState('');
+
 
     const handleDelete = (todoId) => {
         deleteTodo(todoId);
