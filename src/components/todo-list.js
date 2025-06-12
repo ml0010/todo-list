@@ -4,10 +4,11 @@ import { FloppyDisk, Pencil, Trash } from 'phosphor-react';
 
 export const TodoList = (props) => {
 
-    const { todos, deleteTodo, editTodo } = props;
+    const { todos, deleteTodo, editTodo, date } = props;
     
     const [ editItemId, setEditItemId ] = useState(null);
     const [ editText, setEditText ] = useState('');
+
 
 
     const handleDelete = (todoId) => {
@@ -32,7 +33,7 @@ export const TodoList = (props) => {
                     <div className='inputbox'>
                     {todo.id === editItemId ? 
                         <form onSubmit={()=>handleSubmitEdit(todo)}>
-                            <input value={editText} onChange={(e)=>setEditText(e.target.value)} maxlength='50' type='text'></input>
+                            <input value={editText} onChange={(e)=>setEditText(e.target.value)} maxLength='50' type='text'></input>
                         </form> :
                         <>{todo.text}</>
                     }

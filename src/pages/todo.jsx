@@ -11,7 +11,7 @@ export const Todo = () => {
     const [ todos, setTodos ] = useState([]);
 
     const { dateSelected } = useContext(DateContext);
-    
+   
     const addTodoToList = (newTodo) => {
         setTodos([...todos, newTodo]);
     };
@@ -35,8 +35,8 @@ export const Todo = () => {
             </div>
             <div className='todo-list'>
                 <h1>To Do List</h1>
-                <TodoForm addTodoToList={addTodoToList} />
-                <TodoList todos={todos} deleteTodo={handleDelete} editTodo={handleSubmitEdit}/>
+                <TodoForm addTodoToList={addTodoToList} date={dateSelected} />
+                <TodoList todos={todos} deleteTodo={handleDelete} editTodo={handleSubmitEdit} date={dateSelected}/>
             </div>
         </div>
     )
