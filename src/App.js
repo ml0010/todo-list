@@ -4,6 +4,7 @@ import { TodoContextProvider } from './contexts/todo-context';
 import Calendar from './pages/calendar';
 import Clock from './pages/clock';
 import Todo from './pages/todo';
+import Weather from './pages/weather';
 
 function App() {
 
@@ -12,8 +13,9 @@ function App() {
             <DateContextProvider>
                 <TodoContextProvider>
                     <div className='pageLeft'>
-                        <Clock />
                         <Calendar />
+                        <Clock />
+                        <Weather />
                     </div>
                     <div className='pageRight'>
                         <Todo />

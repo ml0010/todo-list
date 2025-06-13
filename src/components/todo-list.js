@@ -45,7 +45,7 @@ export const TodoList = () => {
     }
 
     const tickOff = async (id) => {
-        console.log("TODO UPDATE");
+        console.log("TICK");
         try {
             const response = await fetch(`http://localhost:4000/completed/${id}/true`, {mode:'cors'});
             console.log(response);
@@ -56,7 +56,7 @@ export const TodoList = () => {
         }
     }
     const unTick = async (id) => {
-        console.log("TODO UPDATE");
+        console.log("UNTICK");
         try {
             const response = await fetch(`http://localhost:4000/completed/${id}/false`, {mode:'cors'});
             console.log(response);
