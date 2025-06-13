@@ -50,6 +50,11 @@ li {
     background-color: var(--gold);
     color: var(--dark);
 }
+.date.today  {
+    background-color: var(--red);
+    color: var(--dark);
+}
+
 
 ol li:nth-child(7n) {
     color: var(--red);

@@ -1,22 +1,24 @@
 import React, { useContext } from 'react'
-import { useState } from 'react';
 import { DateContext } from '../contexts/date-context';
 import TodoForm from '../components/todo-form';
 import TodoList from '../components/todo-list';
 import '../styles/todo.css';
+import { CaretDoubleLeft, CaretDoubleRight } from 'phosphor-react';
 
 
 export const Todo = () => {
 
-    const { dateSelected } = useContext(DateContext);
+    const { dateSelected, setDayBefore, setNextDay  } = useContext(DateContext);
    
     return (
         <div className='todo-box'>
-            <div className='date-selected'>
-                {dateSelected.toDateString()}
+            <h1>To Do List</h1>
+            <div className='selected-date'>
+                <CaretDoubleLeft size={23} onClick={()=>setDayBefore()} />
+                <p>{dateSelected.toDateString()}</p>
+                <CaretDoubleRight size={23} onClick={()=>setNextDay()} />
             </div>
             <div className='todo-list'>
-                <h1>To Do List</h1>
                 <TodoForm />
                 <TodoList />
             </div>

@@ -2,10 +2,15 @@
     display: grid;
     justify-content: center;
 }
-
-.date-selected {
-    font-size: 40px;
+.selected-date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.selected-date p {
+    font-size: 30px;
     color: var(--gold);
+    width: 20vw;
 }
 .todo-list {
     width: 45vw;

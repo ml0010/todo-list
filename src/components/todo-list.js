@@ -7,7 +7,7 @@ import { DateContext } from '../contexts/date-context';
 export const TodoList = () => {
 
 
-    const { todos, setTodos, getTodoList } = useContext(TodoContext);
+    const { todos, getTodoList } = useContext(TodoContext);
     const { dateSelected } = useContext(DateContext);
     const todoToday = todos.filter((todo) => todo.date === dateSelected.toDateString());
     

@@ -5,6 +5,7 @@ export const TodoContext = createContext(null);
 export const TodoContextProvider = (props) => {
 
     const [ todos, setTodos ] = useState([]);
+    const [ todoDates, setTodoDates ] = useState([]);
 
     const getTodoList = async () => {
         console.log("GET TODO LIST")
@@ -23,7 +24,7 @@ export const TodoContextProvider = (props) => {
         }
     }
     
-    const contextValue = { todos, setTodos, getTodoList };
+    const contextValue = { todos, setTodos, getTodoList, todoDates, setTodoDates };
     
     return (
         <TodoContext.Provider value={contextValue}>{props.children}</TodoContext.Provider>
