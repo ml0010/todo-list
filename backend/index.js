@@ -9,7 +9,9 @@ app.use(bodyParser.json());
 
 const mongoose = require('mongoose');
 require('dotenv').config();
-mongoose.connect(process.env.MONGO_URI).then(()=>console.log("Successfully connected to MongoDB")).catch((error)=>console.log("Couldn't connect to MongoDB"));
+//mongoose.connect(process.env.MONGO_URI).then(()=>console.log("Successfully connected to MongoDB")).catch((error)=>console.log("Couldn't connect to MongoDB"));
+mongoose.connect('mongodb+srv://mimi:1234@cluster0.imwt8e3.mongodb.net/?retryWrites=true&w=majority').then(()=>console.log("Successfully connected to MongoDB")).catch((error)=>console.log("Couldn't connect to MongoDB"));
+
 
 const todosSchema = new mongoose.Schema({
     todo: String,
@@ -90,7 +92,7 @@ app.get('/completed/:id/false', async(req, res) => {
     console.log("completed");
     const id = req.params.id;
     try {
-        const todo = await Todos.findOneAndUpdate({_id: id}, {completed: false}, {new: true});
+        const todo = await Todos.findOneAndUpdate({_id: id}, {completed: true}, {new: true});
         console.log("COMPLETED");
         res.json(todo);
     } catch (err) {
