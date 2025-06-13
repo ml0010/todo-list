@@ -90,15 +90,13 @@ app.get('/completed/:id/false', async(req, res) => {
     console.log("completed");
     const id = req.params.id;
     try {
-        const todo = await Todos.findOneAndUpdate({_id: id}, {completed: true}, {new: true});
+        const todo = await Todos.findOneAndUpdate({_id: id}, {completed: false}, {new: true});
         console.log("COMPLETED");
         res.json(todo);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
 });
-
-
 
 app.listen(4000, () => {
     console.log("Console is running on port 4000");
