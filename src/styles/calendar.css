@@ -1,12 +1,32 @@
 .calendar {
-    padding: 10px;
+    padding: 8px;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+}
+
+.todayBttn {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    margin: auto;
+    font-size: 13px;
+}
+.todayBttn:hover {
+    color: var(--red);
+}
+.todayBttn svg {
+    margin-right: 3px;
 }
 .calendar .month-year {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 25px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+}
+.month-year p {
+    width: 180px;
 }
 
 .calendar .date {
@@ -17,18 +37,15 @@
     background-color: var(--cream);
     color: var(--dark);
 }
-.month-year p {
-    width: 180px;
-}
 
 .days li {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 ul, ol {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-gap: 1em;
+    grid-gap: 0.7em;
     margin: 0 auto;
     max-width: 64em;
     padding: 0;
@@ -44,7 +61,6 @@ li {
     border-radius: 20px;
     width: 35px;
     height: 35px;
-    
 }
 .date.selected  {
     background-color: var(--gold);
@@ -63,3 +79,24 @@ ol li:nth-child(7n-1) {
     color: var(--blue);
 }
 
+
+@media only screen and (max-width: 900px) {
+}
+@media only screen and (max-width: 600px) {
+    .calendar .month-year {
+        font-size: 18px;
+    }
+    .clock h1 {
+        font-size: 13px;
+    }
+    ul, ol {
+        grid-gap: 0.3em;
+    }
+    .days li {
+        margin-bottom: 0;
+    }
+}
+@media only screen and (min-width: 600px) {
+}
+@media only screen and (min-width: 400px) {
+}

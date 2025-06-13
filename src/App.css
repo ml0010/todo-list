@@ -11,25 +11,45 @@
     font-family: 'Helvetica';
     display: flex;
     flex-direction: row;
+    text-align: center;
     background-color: var(--dark);
     color: var(--cream);
     height: 100vh;
-    text-align: center;
+    padding-bottom: 50px;
 }
 
 .pageLeft {
     width: 30%;
-    padding: 30px;
 }
 .pageRight {
     width: 70%;
-    padding: 30px;
 }
 button {
+    cursor: pointer;
     border: none;
     background-color: transparent;
     color: var(--cream);
 }
 svg {
     cursor: pointer;
+}
+
+@media only screen and (max-width: 900px) {
+    .App{
+        flex-direction: column;
+        height: auto;
+    }
+    .pageLeft {
+        width: 100%;
+    }
+    .pageRight {
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 600px) {
+
+}
+@media only screen and (min-width: 600px) {
+}
+@media only screen and (min-width: 400px) {
 }

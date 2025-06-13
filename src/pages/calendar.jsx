@@ -1,16 +1,14 @@
 import React, { useContext, useState } from 'react'
 import '../styles/calendar.css'
 import { DateContext } from '../contexts/date-context';
-import { CaretDoubleLeft, CaretDoubleRight } from 'phosphor-react';
+import { CalendarCheck, CaretDoubleLeft, CaretDoubleRight } from 'phosphor-react';
 
 
 export const Calendar = () => {
 
     const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
-    const [ currentDate, setCurrentDate ] = useState(new Date());
-
-    const { dateSelected, setDateSelected } = useContext(DateContext);
+    const { calendarDate, setCalendarDate, dateSelected, setDateSelected } = useContext(DateContext);
 
     const today = new Date();
 
@@ -25,55 +23,61 @@ export const Calendar = () => {
     };
 
     const getSortedDays = () => {
-        const numberOfDates = new Date(dateSelected.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+        const numberOfDates = new Date(calendarDate.getFullYear(), calendarDate.getMonth() + 1, 0).getDate();
         const datesArray = getDatesRange(numberOfDates);
-        const index = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1).getDay();
+        const index = new Date(calendarDate.getFullYear(), calendarDate.getMonth(), 1).getDay();
         return [...Array(index === 0 ? 6 : index - 1), ...datesArray];
     };
 
     const getMonth = () => {
-        const monthString = (currentDate.toDateString().split(' '))[1];
+        const monthString = (calendarDate.toDateString().split(' '))[1];
         return monthString;
     };
     const getYear = () => {
-        const yearString = currentDate.getFullYear();
+        const yearString = calendarDate.getFullYear();
         return yearString;
     };
 
     const nextMonth = () => {
-        const month = currentDate.getMonth();
+        const month = calendarDate.getMonth();
         if (month < 11) {
-            currentDate.setMonth(month + 1);
+            calendarDate.setMonth(month + 1);
         } else {
-            currentDate.setMonth(0);
-            currentDate.setFullYear(currentDate.getFullYear() + 1);
+            calendarDate.setMonth(0);
+            calendarDate.setFullYear(calendarDate.getFullYear() + 1);
         }
-        setCurrentDate(new Date(currentDate));
+        setCalendarDate(new Date(calendarDate));
     };
 
     const prevMonth = () => {
-        const month = currentDate.getMonth();
+        const month = calendarDate.getMonth();
         if (month > 0) {
-            currentDate.setMonth(month - 1);
+            calendarDate.setMonth(month - 1);
         } else {
-            currentDate.setMonth(11);
-            currentDate.setFullYear(currentDate.getFullYear() - 1);
+            calendarDate.setMonth(11);
+            calendarDate.setFullYear(calendarDate.getFullYear() - 1);
         }
-        setCurrentDate(new Date(currentDate));
+        setCalendarDate(new Date(calendarDate));
     };
     const dateToString = (date) => {
-        const month = currentDate.getMonth() + 1;
-        const year = currentDate.getFullYear();
+        const month = calendarDate.getMonth() + 1;
+        const year = calendarDate.getFullYear();
         return `${year}-${month}-${date}`;
     };
 
-    const handleNewDate = (date) => {
-        console.log(new Date(dateToString(date)));
+    const handleDateClick = (date) => {
         setDateSelected(new Date(dateToString(date)));
+    };
+    const handleSelectToday = () => {
+        setDateSelected(today);
+        setCalendarDate(today);
     };
 
     return (
-        <div className='calendar'>
+        <div className='calendar'>            
+            <div>
+                <button className='todayBttn' onClick={()=>handleSelectToday()}><CalendarCheck size={20} />SELECT TODAY</button>
+            </div>
             <div className='month-year'>
                 <CaretDoubleLeft size={23} onClick={() => prevMonth()} />
                 <p>{getMonth()} {getYear()}</p>
@@ -89,7 +93,7 @@ export const Calendar = () => {
                         className={`date ${dateSelected.toDateString() === new Date(dateToString(date)).toDateString() ? 'selected' : ''} ${today.toDateString() === new Date(dateToString(date)).toDateString() ? 'today' : ''}`} 
                         key={index} 
                         value={date} 
-                        onClick={(e)=>handleNewDate(e.target.value)}>
+                        onClick={(e)=>handleDateClick(e.target.value)}>
                         {date}
                     </li>
                 ))}
