@@ -8,26 +8,8 @@ import '../styles/todo.css';
 
 export const Todo = () => {
 
-    const [ todos, setTodos ] = useState([]);
-
     const { dateSelected } = useContext(DateContext);
    
-    const addTodoToList = (newTodo) => {
-        setTodos([...todos, newTodo]);
-    };
-    const handleDelete = (id) => {
-        let updateTodos = todos.filter((todo) => todo.id !== id);
-        setTodos(updateTodos);
-    };
-    const handleSubmitEdit = (newTodo) => {
-        const todoIndex = todos.findIndex((todo) => todo.id === newTodo.id);
-        if (todoIndex !== -1) {
-            const updateTodos = [...todos];
-            updateTodos[todoIndex] = newTodo;
-            setTodos(updateTodos);
-        }
-    };
-
     return (
         <div className='todo-box'>
             <div className='date-selected'>
@@ -35,8 +17,8 @@ export const Todo = () => {
             </div>
             <div className='todo-list'>
                 <h1>To Do List</h1>
-                <TodoForm addTodoToList={addTodoToList} date={dateSelected} />
-                <TodoList todos={todos} deleteTodo={handleDelete} editTodo={handleSubmitEdit} date={dateSelected}/>
+                <TodoForm />
+                <TodoList />
             </div>
         </div>
     )

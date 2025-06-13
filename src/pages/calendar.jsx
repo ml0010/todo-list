@@ -63,6 +63,12 @@ export const Calendar = () => {
         const year = currentDate.getFullYear();
         return `${year}-${month}-${date}`;
     };
+
+    const handleNewDate = (date) => {
+        console.log(new Date(dateToString(date)));
+        setDateSelected(new Date(dateToString(date)));
+    };
+
     return (
         <div className='calendar'>
             <div className='month-year'>
@@ -76,7 +82,7 @@ export const Calendar = () => {
             </ul>
             <ol className='dates'>
                 {getSortedDays().map((date, index) => (
-                    <li className={`date ${dateSelected.toDateString() === new Date(dateToString(date)).toDateString() ? 'selected' : ''}`} key={index} value={date} onClick={(e)=>setDateSelected(new Date(dateToString(e.target.value)))}>
+                    <li className={`date ${dateSelected.toDateString() === new Date(dateToString(date)).toDateString() ? 'selected' : ''}`} key={index} value={date} onClick={(e)=>handleNewDate(e.target.value)}>
                         {date}
                     </li>
                 ))}

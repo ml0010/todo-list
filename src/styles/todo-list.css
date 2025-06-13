@@ -1,4 +1,4 @@
-.todo {
+.todo-list .todo {
     background-color: var(--grey);
     padding: 10px;
     margin: 5px;
@@ -9,7 +9,8 @@
     justify-content: space-between;
 }
 
-.todo-text {
+
+.todo-list .todo-text {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,4 +34,7 @@
 .todo:has([type=checkbox]:checked) {
     text-decoration: line-through;
     color: grey;
+}
+p {
+    color:white;
 }
