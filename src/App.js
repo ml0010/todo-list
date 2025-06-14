@@ -13,8 +13,8 @@ function App() {
             <DateContextProvider>
                 <TodoContextProvider>
                     <div className='pageLeft'>
-                        <Calendar />
                         <Clock />
+                        <Calendar />
                         <Weather />
                     </div>
                     <div className='pageRight'>

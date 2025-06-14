@@ -79,9 +79,9 @@ export const Calendar = () => {
                 <button className='todayBttn' onClick={()=>handleSelectToday()}><CalendarCheck size={20} />SELECT TODAY</button>
             </div>
             <div className='month-year'>
-                <CaretDoubleLeft size={23} onClick={() => prevMonth()} />
+                <CaretDoubleLeft size={20} onClick={() => prevMonth()} />
                 <p>{getMonth()} {getYear()}</p>
-                <CaretDoubleRight size={23} onClick={() => nextMonth()} />
+                <CaretDoubleRight size={20} onClick={() => nextMonth()} />
             </div>
             <ul className='days'>
                 {DAYS.map((day, index) => 

@@ -1,8 +1,11 @@
 .calendar {
-    padding: 8px;
+    padding: 5px;
     display: grid;
     grid-template-columns: 1fr;
     justify-content: center;
+    border: 3px solid var(--grey);
+    border-radius: 15px;
+    margin: 30px;
 }
 
 .calendar .todayBttn {
@@ -13,7 +16,7 @@
     font-size: 13px;
 }
 .todayBttn:hover {
-    color: var(--red);
+    color: var(--gold);
 }
 .todayBttn svg {
     margin-right: 3px;
@@ -22,8 +25,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 25px;
-    margin-bottom: 10px;
+    font-size: 20px;
 }
 .month-year p {
     width: 180px;
@@ -34,7 +36,7 @@
     transition: 0.1s ease-in-out;
 }
 .calendar .date:hover {
-    background-color: var(--cream);
+    background-color: rgba(255, 255, 255, 0.746);
     color: var(--dark);
 }
 
@@ -45,7 +47,7 @@
 ul, ol {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-gap: 0.7em;
+    grid-gap: 0.6em;
     margin: 0 auto;
     max-width: 64em;
     padding: 0;
@@ -57,17 +59,17 @@ li {
     justify-content: center;
     list-style: none;
     margin: 0 auto;
-    font-size: calc(16px + (21 - 16) * ((100vw - 300px) / (1600 - 300)));
+    font-size: calc(14px + (21 - 16) * ((100vw - 300px) / (1600 - 300)));
     border-radius: 20px;
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
 }
 .date.selected  {
     background-color: var(--gold);
     color: var(--dark);
 }
 .date.today  {
-    background-color: var(--red);
+    background-color: rgb(170, 228, 255);
     color: var(--dark);
 }
 

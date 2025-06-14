@@ -1,6 +1,12 @@
 .todo-box {
-    display: grid;
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    margin: 25px;
+    border: 3px solid var(--grey);
+    border-radius: 15px;
+    height: 90vh;
 }
 .selected-date {
     display: flex;

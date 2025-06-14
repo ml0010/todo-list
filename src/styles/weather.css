@@ -1,38 +1,41 @@
 .weather {
-    margin: 10px;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     justify-content: center;
+    border: 3px solid var(--grey);
+    border-radius: 15px;
+    padding: 15px;
+    margin: 30px;
 }
 .weather h2 {
     font-size: 18px;
-    width: 100%;
+    width:  130PX;
     height: 20px;
 }
 .weather p {
-    font-size: 13px;
-    margin: 8px;
+    font-size: 12px;
 }
 
 .city-info {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: auto;
 }
-.city-info div{
-    width: 60%;
-    height: 30px;
+.search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 35px;
 }
 
-.button {
-    width: 40%;
-    height: 30px;
-}
 .city-info input {
-    border-radius: 5px;
     text-align: center;
     background-color: var(--grey);
     color: var(--ceram);
     border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    height: 30px;
+    width: 130px;
 }

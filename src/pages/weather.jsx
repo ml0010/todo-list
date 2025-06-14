@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import '../styles/weather.css'
 import { MagnifyingGlass } from 'phosphor-react';
 
@@ -19,6 +19,8 @@ export const Weather = () => {
             console.log(err);
         }
     }
+
+    
 
     const getWeatherData = async () => {
         console.log("GET WEATHER DATA");
@@ -44,6 +46,25 @@ export const Weather = () => {
     }, [location]);
 
 
+    const modalRef = useRef();
+
+    const handleClickOutside = (e) => {
+        if (modalRef.current && !modalRef.current.contains(e.target)) {
+            setSearch(false);
+        }
+    };
+
+    useEffect(() => {
+        if (search) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [search]);
+
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
         setLocation(e.target.newLocation.value);
@@ -55,8 +76,8 @@ export const Weather = () => {
         <div className='weather'>
             {weatherData ? (
             <>
-                <div className='city-info'>
-                    <div onClick={()=>setSearch(!search)}>
+                <div className='city-info' ref={modalRef}>
+                    <div className='search'>
                     {search? 
                         <form onSubmit={handleSubmit}>
                             <input 
@@ -66,14 +87,14 @@ export const Weather = () => {
                                 value={location.city}
                             />
                         </form>
-                     : <h2>{weatherData.name}, {weatherData.sys.country}</h2>}
+                     : <h2 onClick={()=>setSearch(true)}>{weatherData.name}, {weatherData.sys.country}</h2>}
+                    <button type="submit"><MagnifyingGlass size={28} onClick={()=>setSearch(!search)} /></button>
                     </div>
-                    <button type="submit"><MagnifyingGlass size={23} onClick={()=>setSearch(!search)}/></button>
-                </div>
-                
+                    <img className='weatherIcon'src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`} />
+                    {weatherData.weather[0].description}
+                </div>              
                 <div className='weather-info'>
                     <p>Temperature: {weatherData.main.temp}°C</p>
-                    <p>Description: {weatherData.weather[0].description}</p>
                     <p>Feels like : {weatherData.main.feels_like}°C</p>
                     <p>Humidity : {weatherData.main.humidity}%</p>
                     <p>Pressure : {weatherData.main.pressure}</p>
