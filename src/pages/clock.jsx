@@ -16,6 +16,7 @@ export const Clock = () => {
         }, 1000);
         return () => clearInterval(interval);
     }, [date]);
+    
     return (
         <div className='clock'>
             <h1>{showDay} {showDate}</h1>

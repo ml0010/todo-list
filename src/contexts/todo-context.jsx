@@ -8,7 +8,8 @@ export const TodoContextProvider = (props) => {
     const [ todoDates, setTodoDates ] = useState([]);
 
     const getTodoList = async () => {
-        console.log("GET TODO LIST")
+        console.log("GET TODO LIST");
+        
         try {
             const response = await fetch(`http://localhost:4000/list`, {mode:'cors'});
             const data = await response.json();

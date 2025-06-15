@@ -40,10 +40,6 @@
     color: var(--dark);
 }
 
-.days li {
-    margin-bottom: 15px;
-}
-
 ul, ol {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -59,6 +55,7 @@ li {
     justify-content: center;
     list-style: none;
     margin: 0 auto;
+    margin-bottom: 5px;
     font-size: calc(14px + (21 - 16) * ((100vw - 300px) / (1600 - 300)));
     border-radius: 20px;
     width: 30px;
@@ -82,21 +79,36 @@ ol li:nth-child(7n-1) {
 }
 
 
-@media only screen and (max-width: 900px) {
-}
-@media only screen and (max-width: 600px) {
-    .calendar .month-year {
-        font-size: 18px;
-    }
-    .clock h1 {
-        font-size: 13px;
+@media only screen and (max-width: 1200px) {
+    .calendar {
+        margin: 10px;
+        margin-right: 0px;
     }
     ul, ol {
         grid-gap: 0.3em;
     }
-    .days li {
+    li {
+        font-size: calc(13px + (21 - 16) * ((100vw - 300px) / (1600 - 300)));
+
+        margin-bottom: 5px;
+    }
+}
+@media only screen and (max-width: 900px) {
+    .calendar {
+        margin: 10px;
+    }
+    .calendar .month-year {
+        font-size: 18px;
+    }
+    ul, ol {
+        grid-gap: 0.3em;
+    }
+    li {
         margin-bottom: 0;
     }
+}
+@media only screen and (max-width: 600px) {
+    
 }
 @media only screen and (min-width: 600px) {
 }

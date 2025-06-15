@@ -19,13 +19,16 @@
     color: var(--gold);
     width: 20vw;
 }
-.todo-list {
-    width: 45vw;
-}
 
+@media only screen and (max-width: 1200px) {
+    .todo-box {
+        margin: 10px;
+        margin-right: 0px;
+    }
+}
 @media only screen and (max-width: 900px) {
-    .todo-list  {
-        width: 85vw;
+    .todo-box {
+        margin: 10px;
     }
     .selected-date p {
         font-size: 18px;

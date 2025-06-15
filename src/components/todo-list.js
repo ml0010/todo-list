@@ -13,7 +13,15 @@ export const TodoList = () => {
     
     const [ editItemId, setEditItemId ] = useState(null);
     const [ editText, setEditText ] = useState('');
+    const [ isFetching, setIsFetching ] = useState(false);
     
+    useEffect(() => {
+        setTimeout(function () {
+            console.log("Delayed for 2 second."); 
+            setIsFetching(true); 
+        }, 2000);
+    }, []);
+
     useEffect(() => {
         getTodoList();
     }, []);
@@ -88,27 +96,31 @@ export const TodoList = () => {
     };
 
     return (
-            <div>{todoToday.map((todo, index) => 
-                <div className='todo' key={index}>
-                    <div className='todo-text'>
-                        <input className='checkbox' type='checkbox' checked={todo.completed} onChange={()=>handleClickCheckbox(todo)}></input>
-                        <div className='inputbox'>
-                            {todo._id === editItemId ? 
-                                <form onSubmit={()=>handleSubmitEdit(todo._id)}>
-                                    <input value={editText} onChange={(e)=>setEditText(e.target.value)} maxLength='50' type='text' name='todoEdited'></input>
-                                </form> :
-                                <>{todo.todo}</>
-                            }
+            <div className='todo-list'> 
+            {isFetching? 
+                <>
+                {todoToday.map((todo, index) => 
+                    <div className='todo' key={index}>
+                        <div className='todo-text'>
+                            <input className='checkbox' type='checkbox' checked={todo.completed} onChange={()=>handleClickCheckbox(todo)}></input>
+                            <div className='inputbox'>
+                                {todo._id === editItemId ? 
+                                    <form onSubmit={()=>handleSubmitEdit(todo._id)}>
+                                        <input value={editText} onChange={(e)=>setEditText(e.target.value)} maxLength='50' type='text' name='todoEdited' />
+                                    </form> :
+                                    <>{todo.todo}</>
+                                }
+                            </div>
                         </div>
-                    </div>
-                    <div className='todo-actions'>
-                        {todo._id === editItemId ? 
-                            <FloppyDisk size={23} onClick={()=>handleSubmitEdit(todo._id)} /> : 
-                            <Pencil size={23} onClick={()=>handleEdit(todo)} />
-                        }
-                        <Trash size={23} onClick={()=>deleteTodo(todo._id)} />
-                    </div>
-                </div>)}
+                        <div className='todo-actions'>
+                            {todo._id === editItemId ? 
+                                <FloppyDisk size={23} onClick={()=>handleSubmitEdit(todo._id)} /> : 
+                                <Pencil size={23} onClick={()=>handleEdit(todo)} />
+                            }
+                            <Trash size={23} onClick={()=>deleteTodo(todo._id)} />
+                        </div>
+                    </div>)}
+                </> : <div className='loader-wrapper'><div className="loader"></div></div> }
         </div>
     )
 }
