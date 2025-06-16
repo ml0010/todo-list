@@ -31,15 +31,6 @@
     width: 180px;
 }
 
-.calendar .date {
-    cursor: pointer;
-    transition: 0.1s ease-in-out;
-}
-.calendar .date:hover {
-    background-color: rgba(255, 255, 255, 0.746);
-    color: var(--dark);
-}
-
 ul, ol {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -61,15 +52,28 @@ li {
     width: 30px;
     height: 30px;
 }
+
+.calendar .date {
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+    border: 1px solid transparent;
+}
+.calendar .date:hover {
+    background-color: var(--gold);
+    color: var(--dark);
+}
+
 .date.selected  {
     background-color: var(--gold);
     color: var(--dark);
 }
 .date.today  {
-    background-color: rgb(170, 228, 255);
+    background-color: var(--cream);
     color: var(--dark);
 }
-
+.date.list-yes {
+    border: 1px solid var(--grey);
+}
 
 ol li:nth-child(7n) {
     color: var(--red);

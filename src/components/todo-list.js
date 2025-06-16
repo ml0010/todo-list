@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import '../styles/todo-list.css'
 import { Backspace, Cactus, FloppyDisk, Pencil, Trash } from 'phosphor-react';
 import { TodoContext } from '../contexts/todo-context';
@@ -26,6 +26,23 @@ export const TodoList = () => {
         setIsFetching(true);
         getTodoList();
     }, []);
+
+    const modalRef = useRef();
+    
+    const handleClickOutside = (e) => {
+        if (modalRef.current && !modalRef.current.contains(e.target)) {
+            setEditItemId(null);
+        }
+    };
+
+    useEffect(() => {
+        if (editItemId) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [editItemId]);
 
     const handleEdit = (todo) => {
         setEditItemId(todo._id);
@@ -59,7 +76,7 @@ export const TodoList = () => {
                     <div className='todo' key={index}>
                         <div className='todo-text'>
                             <input className='checkbox' type='checkbox' checked={todo.completed} onChange={()=>handleClickCheckbox(todo)}></input>
-                            <div className='inputbox'>
+                            <div className='inputbox' ref={modalRef}>
                                 {todo._id === editItemId ? 
                                     <form onSubmit={()=>handleSubmitEdit(todo._id)}>
                                         <input value={editText} onChange={(e)=>setEditText(e.target.value)} maxLength='50' type='text' name='todoEdited' />

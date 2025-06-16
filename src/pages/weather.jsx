@@ -20,8 +20,6 @@ export const Weather = () => {
         }
     }
 
-    
-
     const getWeatherData = async () => {
         console.log("GET WEATHER DATA");
         if(location) {

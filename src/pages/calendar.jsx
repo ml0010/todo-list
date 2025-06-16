@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import '../styles/calendar.css'
 import { DateContext } from '../contexts/date-context';
 import { CalendarCheck, CaretDoubleLeft, CaretDoubleRight } from 'phosphor-react';
+import { TodoContext } from '../contexts/todo-context';
 
 
 export const Calendar = () => {
@@ -9,9 +10,13 @@ export const Calendar = () => {
     const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
     const { calendarDate, setCalendarDate, dateSelected, setDateSelected } = useContext(DateContext);
+    const { todos } = useContext(TodoContext);
 
     const today = new Date();
-
+    const todosDates = todos.map((todo)=> {
+        return todo.date;
+    });
+    console.log(todosDates);
     const getDatesRange = (lastDayOfMonth) => {
         const { datesArray } = Array.from({ length: lastDayOfMonth })
             .reduce(({ datesArray, current }) => ({
@@ -90,7 +95,7 @@ export const Calendar = () => {
             <ol className='dates'>
                 {getSortedDays().map((date, index) => (
                     <li 
-                        className={`date ${dateSelected.toDateString() === new Date(dateToString(date)).toDateString() ? 'selected' : ''} ${today.toDateString() === new Date(dateToString(date)).toDateString() ? 'today' : ''}`} 
+                        className={`date ${dateSelected.toDateString() === new Date(dateToString(date)).toDateString() ? 'selected' : ''} ${today.toDateString() === new Date(dateToString(date)).toDateString() ? 'today' : ''} ${todosDates.includes(new Date(dateToString(date)).toDateString()) ? 'list-yes' : ''}`} 
                         key={index} 
                         value={date} 
                         onClick={(e)=>handleDateClick(e.target.value)}>

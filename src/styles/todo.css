@@ -25,18 +25,20 @@
         margin: 10px;
         margin-right: 0px;
     }
+    .selected-date p {
+        width: 30vw;
+    }
 }
 @media only screen and (max-width: 900px) {
     .todo-box {
         margin: 10px;
     }
-    .selected-date p {
-        font-size: 18px;
-        color: var(--gold);
-        width: 40vw;
-    }
     .todo-box h1 {
         font-size: 25px;
+    }
+    .selected-date p {
+        font-size: 18px;
+        width: 40vw;
     }
 }
 @media only screen and (max-width: 600px) {
