@@ -1,80 +1,31 @@
 import React, { useContext, useEffect, useState } from 'react'
 import '../styles/todo-list.css'
-import { FloppyDisk, Pencil, Trash } from 'phosphor-react';
+import { Backspace, Cactus, FloppyDisk, Pencil, Trash } from 'phosphor-react';
 import { TodoContext } from '../contexts/todo-context';
 import { DateContext } from '../contexts/date-context';
 
 export const TodoList = () => {
 
 
-    const { todos, getTodoList } = useContext(TodoContext);
+    const { todos, getTodoList, isFetching, setIsFetching, deleteTodo, deleteTodoAll, editTodo, tickOff, unTick } = useContext(TodoContext);
     const { dateSelected } = useContext(DateContext);
-    const todoToday = todos.filter((todo) => todo.date === dateSelected.toDateString());
     
     const [ editItemId, setEditItemId ] = useState(null);
     const [ editText, setEditText ] = useState('');
-    const [ isFetching, setIsFetching ] = useState(false);
+    
+    const todoToday = todos.filter((todo) => todo.date === dateSelected.toDateString());
     
     useEffect(() => {
         setTimeout(function () {
-            console.log("Delayed for 2 second."); 
-            setIsFetching(true); 
-        }, 2000);
-    }, []);
+            console.log("Delayed for 0.2 second."); 
+            setIsFetching(false);
+        }, 200);
+    }, [isFetching]);
 
     useEffect(() => {
+        setIsFetching(true);
         getTodoList();
     }, []);
-
-    const deleteTodo = async (id) => {
-        console.log("DELETE TODO")
-        try {
-            const response = await fetch(`http://localhost:4000/delete/${id}`, {mode:'cors'});
-            console.log(response);
-            //setTodoListLoaded(false);
-            getTodoList();
-        }
-        catch (err) {
-            console.log(err);
-        }
-    }
-    
-
-    const editTodo = async (id, todo) => {
-        console.log("TODO UPDATE");
-        try {
-            const response = await fetch(`http://localhost:4000/edit/${id}/${todo}`, {mode:'cors'});
-            console.log(response);
-            getTodoList();
-        }
-        catch (err) {
-            console.log(err);
-        }
-    }
-
-    const tickOff = async (id) => {
-        console.log("TICK");
-        try {
-            const response = await fetch(`http://localhost:4000/completed/${id}/true`, {mode:'cors'});
-            console.log(response);
-            getTodoList();
-        }
-        catch (err) {
-            console.log(err);
-        }
-    }
-    const unTick = async (id) => {
-        console.log("UNTICK");
-        try {
-            const response = await fetch(`http://localhost:4000/completed/${id}/false`, {mode:'cors'});
-            console.log(response);
-            getTodoList();
-        }
-        catch (err) {
-            console.log(err);
-        }
-    }
-
 
     const handleEdit = (todo) => {
         setEditItemId(todo._id);
@@ -86,7 +37,6 @@ export const TodoList = () => {
         editTodo(id, editText);
     };
     
-
     const handleClickCheckbox = (todo) => {
         if(todo.completed) {
             unTick(todo._id);
@@ -95,9 +45,15 @@ export const TodoList = () => {
         }
     };
 
+    const handleDeleteAll = () => {
+        if(window.confirm(`Your list of ${dateSelected.toDateString()} will be deleted permanantly.`)) {
+            deleteTodoAll(dateSelected);
+        }
+    }
+
     return (
             <div className='todo-list'> 
-            {isFetching? 
+            {!isFetching? 
                 <>
                 {todoToday.map((todo, index) => 
                     <div className='todo' key={index}>
@@ -117,9 +73,18 @@ export const TodoList = () => {
                                 <FloppyDisk size={23} onClick={()=>handleSubmitEdit(todo._id)} /> : 
                                 <Pencil size={23} onClick={()=>handleEdit(todo)} />
                             }
-                            <Trash size={23} onClick={()=>deleteTodo(todo._id)} />
+                            <Backspace size={23} onClick={()=>deleteTodo(todo._id)} />
                         </div>
                     </div>)}
+                    {todoToday.length? 
+                        <div className='deleteAllBttn' onClick={handleDeleteAll}>
+                            <Trash size={20} />DELETE ALL
+                        </div> : 
+                        <div className='emptyList'>
+                            <Cactus size={20} />
+                            <p>NO PLANS</p>
+                        </div>
+                    }
                 </> : <div className='loader-wrapper'><div className="loader"></div></div> }
         </div>
     )

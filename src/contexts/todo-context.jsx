@@ -6,10 +6,10 @@ export const TodoContextProvider = (props) => {
 
     const [ todos, setTodos ] = useState([]);
     const [ todoDates, setTodoDates ] = useState([]);
+    const [ isFetching, setIsFetching ] = useState(true);
 
     const getTodoList = async () => {
         console.log("GET TODO LIST");
-        
         try {
             const response = await fetch(`http://localhost:4000/list`, {mode:'cors'});
             const data = await response.json();
@@ -17,15 +17,72 @@ export const TodoContextProvider = (props) => {
                 console.log("No todo list");
             } else {
                 setTodos(()=>[...data]);
-                //setTodoListLoaded(true);
             }
         }
         catch (err) {
             console.log(err);
         }
     }
-    
-    const contextValue = { todos, setTodos, getTodoList, todoDates, setTodoDates };
+    const deleteTodo = async (id) => {
+        console.log("DELETE TODO")
+        try {
+            const response = await fetch(`http://localhost:4000/delete/${id}`, {mode:'cors'});
+            console.log(response);
+            getTodoList();
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+
+    const deleteTodoAll = async (date) => {
+        console.log("DELETE ALL TODO")
+        try {
+            const response = await fetch(`http://localhost:4000/deleteall/${date.toDateString()}`, {mode:'cors'});
+            console.log(response);
+            getTodoList();
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+
+    const editTodo = async (id, todo) => {
+        console.log("TODO UPDATE - " + todo);
+        try {
+            const response = await fetch(`http://localhost:4000/edit/${id}/${todo}`, {mode:'cors'});
+            console.log(response);
+            getTodoList();
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+
+    const tickOff = async (id) => {
+        console.log("TICK");
+        try {
+            const response = await fetch(`http://localhost:4000/completed/${id}/true`, {mode:'cors'});
+            console.log(response);
+            getTodoList();
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+    const unTick = async (id) => {
+        console.log("UNTICK");
+        try {
+            const response = await fetch(`http://localhost:4000/completed/${id}/false`, {mode:'cors'});
+            console.log(response);
+            getTodoList();
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+
+    const contextValue = { todos, setTodos, todoDates, setTodoDates, isFetching, setIsFetching, getTodoList, deleteTodo, deleteTodoAll, editTodo, tickOff, unTick };
     
     return (
         <TodoContext.Provider value={contextValue}>{props.children}</TodoContext.Provider>

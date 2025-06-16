@@ -29,6 +29,7 @@
 }
 .todo svg {
     padding-right: 5px;
+    cursor: pointer;
 }
 .todo svg:hover {
     color: var(--gold);
@@ -38,8 +39,36 @@
     text-decoration: line-through;
     color: grey;
 }
-p {
+.todo-list p {
     color:white;
+}
+
+.deleteAllBttn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.deleteAllBttn:hover {
+    color: var(--gold);
+}
+.deleteAllBttn svg {
+    margin-right: 5px;
+}
+
+.emptyList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    margin-top: 20px;
+    opacity: 0.5;
+}
+.emptyList svg {
+    margin-right: 5px;
 }
 .loader-wrapper {
     display: flex;

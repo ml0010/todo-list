@@ -59,6 +59,20 @@ app.get('/delete/:id', async(req, res) => {
     }
 });
 
+// Delete All Todo - Selected Date
+app.get('/deleteall/:date', async(req, res) => {
+    console.log("delete all");
+    const date = req.params.date;
+    try {
+        const todo = await Todos.deleteMany({date: date});
+        console.log("BOOKING ON " + date + " DELETED all");
+        res.json(todo);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
+
 // Edit Todo
 app.get('/edit/:id/:todo', async(req, res) => {
     console.log("edit");
@@ -72,6 +86,7 @@ app.get('/edit/:id/:todo', async(req, res) => {
         res.status(500).json({ message: err.message });
     }
 });
+
 // Todo Completed - true
 app.get('/completed/:id/true', async(req, res) => {
     console.log("completed");
