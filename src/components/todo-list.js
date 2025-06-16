@@ -17,10 +17,10 @@ export const TodoList = () => {
     
     useEffect(() => {
         setTimeout(function () {
-            console.log("Delayed for 0.2 second."); 
+            //console.log("Delayed for 0.2 second."); 
             setIsFetching(false);
         }, 200);
-    }, [isFetching]);
+    }, [isFetching, setIsFetching]);
 
     useEffect(() => {
         setIsFetching(true);

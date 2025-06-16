@@ -13,7 +13,7 @@ export const Weather = () => {
             const response = await axios.get("http://ip-api.com/json");
             if (response.status === 200) {
                 setLocation(response.data.city);
-                console.log(response.data);
+                //console.log(response.data);
             }
         } catch (err) {
             console.log(err);
@@ -26,7 +26,7 @@ export const Weather = () => {
             try {
                 const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=2f82b8cd333e994c4f294e5b5785a64b`);
                 setWeatherData(response.data);
-                console.log(response.data);
+                //console.log(response.data);
             } catch (err) {
                 console.log(err);
             }
@@ -88,7 +88,7 @@ export const Weather = () => {
                      : <h2 onClick={()=>setSearch(true)}>{weatherData.name}, {weatherData.sys.country}</h2>}
                     <button type="submit"><MagnifyingGlass size={28} onClick={()=>setSearch(!search)} /></button>
                     </div>
-                    <img className='weatherIcon'src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`} />
+                    <img className='weatherIcon'src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`} alt={weatherData.weather[0].description} />
                     {weatherData.weather[0].description}
                 </div>              
                 <div className='weather-info'>

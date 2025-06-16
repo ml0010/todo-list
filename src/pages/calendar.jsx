@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import '../styles/calendar.css'
 import { DateContext } from '../contexts/date-context';
 import { CalendarCheck, CaretDoubleLeft, CaretDoubleRight } from 'phosphor-react';
@@ -16,7 +16,7 @@ export const Calendar = () => {
     const todosDates = todos.map((todo)=> {
         return todo.date;
     });
-    console.log(todosDates);
+
     const getDatesRange = (lastDayOfMonth) => {
         const { datesArray } = Array.from({ length: lastDayOfMonth })
             .reduce(({ datesArray, current }) => ({
