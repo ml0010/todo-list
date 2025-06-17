@@ -22,7 +22,6 @@ export const DateContextProvider = (props) => {
         const divId = document.getElementById(id.toDateString());
         if(divId) {
             divId.scrollIntoView({behavior: "smooth"});
-            //console.log("scroll");
         }
     }
 

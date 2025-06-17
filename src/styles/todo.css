@@ -40,20 +40,6 @@
     width: 200px;
 }
 
-.todo-list-by-date {
-    display: none;
-}
-.todo-list-by-date.active {
-    display: unset;
-}
-.todo-list-list-all {
-    display: none;
-}
-.todo-list-list-all.active {
-    display: unset;
-}
-
-
 @media only screen and (max-width: 1200px) {
     .todo-box {
         margin: 10px;

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import { TodoContext } from '../contexts/todo-context';
 import { DateContext } from '../contexts/date-context';
 import '../styles/todo-list-all.css'
@@ -7,15 +7,17 @@ import { Backspace, FloppyDisk, Pencil, Trash } from 'phosphor-react';
 export const TodoListAll = () => {
 
     const { todos, todosDatesList, editItemId, editText, setEditText, deleteTodo, deleteTodoAll, handleClickCheckbox, handleEdit, handleSubmitEdit, resetEdit } = useContext(TodoContext); 
-    const { setDateSelected } = useContext(DateContext);
+    const { setDateSelected, setCalendarDate } = useContext(DateContext);
 
     const todoDatesSortedList = todosDatesList.map((date) => new Date(date)).sort((a,b) => a < b ? -1 : a > b ? 1 : 0).map((date) => date.toDateString());
 
-/*
+    /*
+    const reference = useRef();
+
     const handleClickOutside = (e) => {
         console.log('closing');
         console.log(e.target);
-        if (allListRef.current && !allListRef.current.contains(e.target)) {
+        if (reference.current && !reference.current.contains(e.target)) {
             resetEdit();
         }
     };
@@ -29,7 +31,8 @@ export const TodoListAll = () => {
         };
     }, [editItemId]);
 
-*/
+    */
+
     const handleDeleteAll = (date) => {
         if(window.confirm(`Your list of ${date} will be deleted permanantly.`)) {
             deleteTodoAll(date);
@@ -38,6 +41,7 @@ export const TodoListAll = () => {
     const handleTodoClick = (date) => {
         const dateFormat = new Date(date);
         setDateSelected(dateFormat);
+        setCalendarDate(dateFormat);
     };
 
     return (

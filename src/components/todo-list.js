@@ -28,7 +28,8 @@ export const TodoList = () => {
     const modalRef = useRef();
     
     const handleClickOutside = (e) => {
-
+        console.log('click from list-day');
+        e.stopPropagation();
         if (modalRef.current && !modalRef.current.contains(e.target)) {
             resetEdit();
             console.log(e.target);
