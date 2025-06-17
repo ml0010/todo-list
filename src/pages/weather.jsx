@@ -122,7 +122,7 @@ export const Weather = () => {
                             />
                             <div className='searchResult'>
                                 {geoData? 
-                                    <ul className="citySearchResultList"> 
+                                <ul className="citySearchResultList"> 
                                     {geoData.map((city, index) => {
                                         return <li value={city.id} key={index} onClick={(e)=>{handleCitySelection(e.target.value)}}>{city.name} , {city.country}</li>;
                                     })}

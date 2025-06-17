@@ -26,7 +26,7 @@ export const TodoForm = (props) => {
         console.log(result);
         setTodo('');
         getTodoList();
-        console.log("NEW TODO ADDED - " + todo);
+        //console.log("NEW TODO ADDED - " + todo);
     }    
 
     return (

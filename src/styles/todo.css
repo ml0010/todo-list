@@ -10,11 +10,36 @@
 }
 .todo-box h1 {
     font-size: 20px;
-    margin: 10px;
 }
 .todo-box .bttns {
     display: flex;
+    gap: 50px;
 }
+.todo-box .bttns button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bttns button svg {
+    padding-right: 3px;
+}
+.todo-box .bttns button:hover {
+    color: var(--gold);
+}
+
+.todo-box .selected-date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.todo-box .selected-date p {
+    font-size: 23px;
+    color: var(--gold);
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 200px;
+}
+
 .todo-list-by-date {
     display: none;
 }
@@ -28,17 +53,6 @@
     display: unset;
 }
 
-.selected-date {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.selected-date p {
-    font-size: 30px;
-    color: var(--gold);
-    width: 20vw;
-}
 
 @media only screen and (max-width: 1200px) {
     .todo-box {

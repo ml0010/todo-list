@@ -8,15 +8,25 @@ export const DateContextProvider = (props) => {
     const [ dateSelected, setDateSelected ] = useState(new Date());
 
     const setDayBefore = () => {
-        setDateSelected(new Date(dateSelected.setDate(dateSelected.getDate() - 1)));
-        setCalendarDate(new Date(dateSelected.setDate(dateSelected.getDate() - 1)));
+        const newDate = new Date(dateSelected.setDate(dateSelected.getDate() - 1));
+        setDateSelected(newDate);
+        setCalendarDate(newDate);
     };
     const setNextDay = () => {
-        setDateSelected(new Date(dateSelected.setDate(dateSelected.getDate() + 1)));
-        setCalendarDate(new Date(dateSelected.setDate(dateSelected.getDate() + 1)));
+        const newDate = new Date(dateSelected.setDate(dateSelected.getDate() + 1));
+        setDateSelected(newDate);
+        setCalendarDate(newDate);
     };
 
-    const contextValue = { calendarDate, setCalendarDate, dateSelected, setDateSelected, setDayBefore, setNextDay };
+    const scrollScreen = (id) => {
+        const divId = document.getElementById(id.toDateString());
+        if(divId) {
+            divId.scrollIntoView({behavior: "smooth"});
+            //console.log("scroll");
+        }
+    }
+
+    const contextValue = { calendarDate, setCalendarDate, dateSelected, setDateSelected, setDayBefore, setNextDay, scrollScreen };
     
     return (
         <DateContext.Provider value={contextValue}>{props.children}</DateContext.Provider>

@@ -7,12 +7,10 @@ import { DateContext } from '../contexts/date-context';
 export const TodoList = () => {
 
 
-    const { todos, getTodoList, isFetching, setIsFetching, deleteTodo, deleteTodoAll, editTodo, handleClickCheckbox} = useContext(TodoContext);
+    const { todos, getTodoList, editItemId, editText, setEditText, isFetching, setIsFetching, deleteTodo, deleteTodoAll, handleClickCheckbox, handleEdit, handleSubmitEdit, resetEdit} = useContext(TodoContext);
     const { dateSelected } = useContext(DateContext);
     
-    const [ editItemId, setEditItemId ] = useState(null);
-    const [ editText, setEditText ] = useState('');
-    
+
     const todoToday = todos.filter((todo) => todo.date === dateSelected.toDateString());
     
     useEffect(() => {
@@ -30,9 +28,10 @@ export const TodoList = () => {
     const modalRef = useRef();
     
     const handleClickOutside = (e) => {
+
         if (modalRef.current && !modalRef.current.contains(e.target)) {
-            setEditItemId(null);
-            setEditText('');
+            resetEdit();
+            console.log(e.target);
         }
     };
 
@@ -45,19 +44,10 @@ export const TodoList = () => {
         };
     }, [editItemId]);
 
-    const handleEdit = (todo) => {
-        setEditItemId(todo._id);
-        setEditText(todo.todo);
-    };
-
-    const handleSubmitEdit = (id) => {
-        setEditItemId(null);
-        editTodo(id, editText);
-    };
-
     const handleDeleteAll = () => {
-        if(window.confirm(`Your list of ${dateSelected.toDateString()} will be deleted permanantly.`)) {
-            deleteTodoAll(dateSelected);
+        const date = dateSelected.toDateString();
+        if(window.confirm(`Your list of ${date} will be deleted permanantly.`)) {
+            deleteTodoAll(date);
         }
     }
 

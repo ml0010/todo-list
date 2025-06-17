@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import '../styles/calendar.css'
 import { DateContext } from '../contexts/date-context';
 import { CalendarCheck, CaretDoubleLeft, CaretDoubleRight } from 'phosphor-react';
@@ -9,10 +9,14 @@ export const Calendar = () => {
 
     const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
-    const { calendarDate, setCalendarDate, dateSelected, setDateSelected } = useContext(DateContext);
-    const { todosDatesList } = useContext(TodoContext);
+    const { calendarDate, setCalendarDate, dateSelected, setDateSelected, scrollScreen } = useContext(DateContext);
+    const { todos, todosDatesList } = useContext(TodoContext);
 
     const today = new Date();
+
+    useEffect(() => {
+        scrollScreen(dateSelected);
+    }, [dateSelected, todos]);
 
     const getDatesRange = (lastDayOfMonth) => {
         const { datesArray } = Array.from({ length: lastDayOfMonth })
@@ -68,7 +72,8 @@ export const Calendar = () => {
     };
 
     const handleDateClick = (date) => {
-        setDateSelected(new Date(dateToString(date)));
+        const dateString = new Date(dateToString(date));
+        setDateSelected(dateString);
     };
     const handleSelectToday = () => {
         setDateSelected(today);
@@ -87,7 +92,8 @@ export const Calendar = () => {
             </div>
             <ul className='days'>
                 {DAYS.map((day, index) => 
-                    <li className='day' key={index}>{day}</li>)}
+                <li className='day' key={index}>{day}</li>
+                )}
             </ul>
             <ol className='dates'>
                 {getSortedDays().map((date, index) => (

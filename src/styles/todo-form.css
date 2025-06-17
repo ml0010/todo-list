@@ -1,6 +1,7 @@
 .todoForm {
-    padding: 10px;
     border-radius: 10px;
+    width: 43vw;
+    padding-bottom: 10px;
 }
 .todoForm form {
     display: flex;
