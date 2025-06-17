@@ -1,31 +1,17 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import '../styles/todo-list.css'
-import { Backspace, Cactus, FloppyDisk, Pencil, Trash } from 'phosphor-react';
 import { TodoContext } from '../contexts/todo-context';
-import { DateContext } from '../contexts/date-context';
+import '../styles/todo-list-all.css'
+import { Backspace, FloppyDisk, Pencil } from 'phosphor-react';
 
-export const TodoList = () => {
+export const TodoListAll = () => {
 
+    const { todos, todosDatesList, getTodoList, isFetching, setIsFetching, deleteTodo, deleteTodoAll, editTodo, tickOff, unTick, handleClickCheckbox } = useContext(TodoContext);
 
-    const { todos, getTodoList, isFetching, setIsFetching, deleteTodo, deleteTodoAll, editTodo, handleClickCheckbox} = useContext(TodoContext);
-    const { dateSelected } = useContext(DateContext);
-    
+    const todoDatesSortedList = todosDatesList.map((date) => new Date(date)).sort((a,b) => a < b ? -1 : a > b ? 1 : 0).map((date) => date.toDateString());
+    //console.log(todoDatesSortedList);
+
     const [ editItemId, setEditItemId ] = useState(null);
     const [ editText, setEditText ] = useState('');
-    
-    const todoToday = todos.filter((todo) => todo.date === dateSelected.toDateString());
-    
-    useEffect(() => {
-        setTimeout(function () {
-            //console.log("Delayed for 0.2 second."); 
-            setIsFetching(false);
-        }, 200);
-    }, [isFetching, setIsFetching]);
-
-    useEffect(() => {
-        setIsFetching(true);
-        getTodoList();
-    }, []);
 
     const modalRef = useRef();
     
@@ -49,25 +35,20 @@ export const TodoList = () => {
         setEditItemId(todo._id);
         setEditText(todo.todo);
     };
-
+    
     const handleSubmitEdit = (id) => {
         setEditItemId(null);
         editTodo(id, editText);
     };
-
-    const handleDeleteAll = () => {
-        if(window.confirm(`Your list of ${dateSelected.toDateString()} will be deleted permanantly.`)) {
-            deleteTodoAll(dateSelected);
-        }
-    }
-
     return (
-            <div className='todo-list'> 
-            {!isFetching? 
-                <>
-                {todoToday.map((todo, index) => 
+        <div className='todo-list-all'>
+            {todoDatesSortedList.map((date, index) => 
+            <div className='todo-by-date' key={index}>
+                <h2>{date}</h2>
+                {todos.map((todo, index) => <>
+                    {date === todo.date ? <>
                     <div className='todo' key={index}>
-                        <div className='todo-text'>
+                        <div  className='todo-text'>
                             <input className='checkbox' type='checkbox' checked={todo.completed} onChange={()=>handleClickCheckbox(todo)}></input>
                             <div className='inputbox' ref={modalRef}>
                                 {todo._id === editItemId ? 
@@ -85,18 +66,13 @@ export const TodoList = () => {
                             }
                             <Backspace size={23} onClick={()=>deleteTodo(todo._id)} />
                         </div>
-                    </div>)}
-                    {todoToday.length? 
-                        <div className='deleteAllBttn' onClick={handleDeleteAll}>
-                            <Trash size={20} />DELETE ALL
-                        </div> : 
-                        <div className='emptyList'>
-                            <Cactus size={20} />
-                            <p>NO PLANS</p>
-                        </div>
-                    }
-                </> : <div className='loader-wrapper'><div className="loader"></div></div> }
+                    </div>
+                </> : <></>}
+                </>
+                )}
+            </div>
+            )}
         </div>
     )
 }
-export default TodoList;
+export default TodoListAll;

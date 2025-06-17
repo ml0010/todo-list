@@ -28,7 +28,32 @@
     align-items: center;
     height: 35px;
 }
-
+.searchForm {
+    position: relative;
+}
+.searchForm .searchResult {
+    position: absolute;
+    top: 35px;
+    left: 0px;
+    color: var(--dark);
+    font-size: 13px;
+    background-color: var(--cream);
+}
+.searchForm .citySearchResultList {
+    display: block;
+    color: var(--dark);
+}
+.searchForm li {
+    font-size: 12px;
+    border-radius: 0;
+    float: left;
+    width: auto;
+    cursor: pointer;
+    text-align: left;
+}
+.searchForm li:hover {
+    color: var(--gold);
+}
 .city-info input {
     text-align: center;
     background-color: var(--grey);
@@ -36,7 +61,7 @@
     border: none;
     border-radius: 5px;
     font-size: 18px;
-    height: 30px;
+    height: 25px;
     width: 130px;
 }
 

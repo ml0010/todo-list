@@ -4,16 +4,30 @@ import '../styles/weather.css'
 import { MagnifyingGlass } from 'phosphor-react';
 
 export const Weather = () => {
-    const [ location, setLocation ] = useState('');
+    const [ location, setLocation ] = useState(''); // save city name, lat, lon value
     const [ weatherData, setWeatherData ] = useState(null);
     const [ search, setSearch ] = useState(false);
+    const [ searchInput, setSearchInput ] = useState('');
+    const [ geoData, setGeoData] = useState(null); // save geo-data
 
     const getInitialLocation = async () => {
         try {
             const response = await axios.get("http://ip-api.com/json");
             if (response.status === 200) {
-                setLocation(response.data.city);
+                setLocation(prev => ({...prev, name: response.data.city, lat: response.data.lat, lon: response.data.lon}));
                 //console.log(response.data);
+                //console.log(geoData);
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    }
+    const searchLocation = async () => {
+        try {
+            const response = await axios.get(`https://geocoding-api.open-meteo.com/v1/search?name=${searchInput}`);
+            if (response.status === 200) {
+                console.log("GEODATA LOADED - " + searchInput);
+                setGeoData(response.data.results.slice(0,5));
             }
         } catch (err) {
             console.log(err);
@@ -21,11 +35,10 @@ export const Weather = () => {
     }
 
     const getWeatherData = async () => {
-        console.log("GET WEATHER DATA");
         if(location) {
             try {
-                const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=2f82b8cd333e994c4f294e5b5785a64b`);
-                setWeatherData(response.data);
+                const response = await axios.get(`https://api.openweathermap.org/data/2.5/find?lat=${location.lat}&lon=${location.lon}&units=metric&appid=2f82b8cd333e994c4f294e5b5785a64b`);
+                setWeatherData(response.data.list[0]);
                 //console.log(response.data);
             } catch (err) {
                 console.log(err);
@@ -39,16 +52,25 @@ export const Weather = () => {
 
     useEffect(() => {
         if(location) {
+            console.log("GETTING WEATHER DATA - " + location.name);
             getWeatherData();
         }
     }, [location]);
-
+    
+    useEffect(()=> {
+        if(searchInput.length >= 2) {
+            console.log("SEARCHING INPUT VALUE INFO - " + searchInput)
+            searchLocation();
+        }
+    }, [searchInput]);
 
     const modalRef = useRef();
 
     const handleClickOutside = (e) => {
         if (modalRef.current && !modalRef.current.contains(e.target)) {
             setSearch(false);
+            setSearchInput('');
+            setGeoData('');
         }
     };
 
@@ -61,12 +83,25 @@ export const Weather = () => {
         };
     }, [search]);
 
-
+    const handleInput = (e) => {
+        e.preventDefault();
+        setSearchInput(e.target.value);
+    }
+    const handleCitySelection = (cityId) => {
+        const city = geoData.find((city) => city.id == cityId);
+        console.log("CITY SELECTED - " + city.name);
+        setLocation(prev => ({...prev, name: city.name, lat: city.latitude, lon: city.longitude}));
+        setGeoData('');
+        setSearchInput('');
+        setSearch(false);
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setLocation(e.target.newLocation.value);
         getWeatherData();
+        setGeoData('');
+        setSearchInput('');
         setSearch(!search);
     };
 
@@ -77,16 +112,25 @@ export const Weather = () => {
                 <div className='city-info' ref={modalRef}>
                     <div className='search'>
                     {search? 
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} className='searchForm'>
                             <input 
                                 className='cityInput'
                                 name='newLocation'
                                 type="text"
-                                value={location.city}
+                                value={searchInput}
+                                onChange={(e)=>handleInput(e)}
                             />
+                            <div className='searchResult'>
+                                {geoData? 
+                                    <ul className="citySearchResultList"> 
+                                    {geoData.map((city, index) => {
+                                        return <li value={city.id} key={index} onClick={(e)=>{handleCitySelection(e.target.value)}}>{city.name} , {city.country}</li>;
+                                    })}
+                                </ul> : <></>}
+                            </div>
                         </form>
                      : <h2 onClick={()=>setSearch(true)}>{weatherData.name}, {weatherData.sys.country}</h2>}
-                    <button type="submit"><MagnifyingGlass size={28} onClick={()=>setSearch(!search)} /></button>
+                        <button type="submit"><MagnifyingGlass size={28} onClick={()=>setSearch(!search)} /></button>
                     </div>
                     <img className='weatherIcon'src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`} alt={weatherData.weather[0].description} />
                     {weatherData.weather[0].description}

@@ -8,6 +8,26 @@
     border-radius: 15px;
     height: 90vh;
 }
+.todo-box h1 {
+    font-size: 20px;
+    margin: 10px;
+}
+.todo-box .bttns {
+    display: flex;
+}
+.todo-list-by-date {
+    display: none;
+}
+.todo-list-by-date.active {
+    display: unset;
+}
+.todo-list-list-all {
+    display: none;
+}
+.todo-list-list-all.active {
+    display: unset;
+}
+
 .selected-date {
     display: flex;
     justify-content: center;

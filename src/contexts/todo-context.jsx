@@ -8,6 +8,10 @@ export const TodoContextProvider = (props) => {
     const [ todoDates, setTodoDates ] = useState([]);
     const [ isFetching, setIsFetching ] = useState(true);
 
+    const todosDatesList = [...new Set(todos.map((todo)=> {
+        return todo.date;
+    }))];
+
     const getTodoList = async () => {
         console.log("GET TODO LIST");
         try {
@@ -82,7 +86,15 @@ export const TodoContextProvider = (props) => {
         }
     }
 
-    const contextValue = { todos, setTodos, todoDates, setTodoDates, isFetching, setIsFetching, getTodoList, deleteTodo, deleteTodoAll, editTodo, tickOff, unTick };
+    const handleClickCheckbox = (todo) => {
+        if(todo.completed) {
+            unTick(todo._id);
+        } else {
+            tickOff(todo._id);
+        }
+    };
+
+    const contextValue = { todos, setTodos, todoDates, todosDatesList, setTodoDates, isFetching, setIsFetching, getTodoList, deleteTodo, deleteTodoAll, editTodo, handleClickCheckbox };
     
     return (
         <TodoContext.Provider value={contextValue}>{props.children}</TodoContext.Provider>

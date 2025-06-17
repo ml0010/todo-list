@@ -10,12 +10,9 @@ export const Calendar = () => {
     const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
     const { calendarDate, setCalendarDate, dateSelected, setDateSelected } = useContext(DateContext);
-    const { todos } = useContext(TodoContext);
+    const { todosDatesList } = useContext(TodoContext);
 
     const today = new Date();
-    const todosDates = todos.map((todo)=> {
-        return todo.date;
-    });
 
     const getDatesRange = (lastDayOfMonth) => {
         const { datesArray } = Array.from({ length: lastDayOfMonth })
@@ -95,7 +92,7 @@ export const Calendar = () => {
             <ol className='dates'>
                 {getSortedDays().map((date, index) => (
                     <li 
-                        className={`date ${dateSelected.toDateString() === new Date(dateToString(date)).toDateString() ? 'selected' : ''} ${today.toDateString() === new Date(dateToString(date)).toDateString() ? 'today' : ''} ${todosDates.includes(new Date(dateToString(date)).toDateString()) ? 'list-yes' : ''}`} 
+                        className={`date ${dateSelected.toDateString() === new Date(dateToString(date)).toDateString() ? 'selected' : ''} ${today.toDateString() === new Date(dateToString(date)).toDateString() ? 'today' : ''} ${todosDatesList.includes(new Date(dateToString(date)).toDateString()) ? 'list-yes' : ''}`} 
                         key={index} 
                         value={date} 
                         onClick={(e)=>handleDateClick(e.target.value)}>
