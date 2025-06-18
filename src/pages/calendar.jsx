@@ -15,8 +15,9 @@ export const Calendar = () => {
     const today = new Date();
 
     useEffect(() => {
+        console.log('scroll from calendar');
         scrollScreen(dateSelected);
-    }, [dateSelected, todos]);
+    }, [scrollScreen, dateSelected, todos]);
 
     const getDatesRange = (lastDayOfMonth) => {
         const { datesArray } = Array.from({ length: lastDayOfMonth })

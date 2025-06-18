@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { TodoContext } from '../contexts/todo-context';
 import { DateContext } from '../contexts/date-context';
 import '../styles/todo-list-all.css'
@@ -8,9 +8,14 @@ import DataLoaderCircle from './data-loader';
 export const TodoListAll = () => {
 
     const { todos, todosDatesList, editItemId, editText, setEditText, isDataFetched, deleteTodo, deleteTodoAll, handleClickCheckbox, handleEdit, handleSubmitEdit, inputRef } = useContext(TodoContext); 
-    const { setDateSelected, setCalendarDate } = useContext(DateContext);
+    const { dateSelected, setDateSelected, setCalendarDate, scrollScreen } = useContext(DateContext);
 
     const todoDatesSortedList = todosDatesList.map((date) => new Date(date)).sort((a,b) => a < b ? -1 : a > b ? 1 : 0).map((date) => date.toDateString());
+
+    useEffect(() => {
+        console.log('scroll from the list');
+        scrollScreen(dateSelected);
+    }, []);
 
     const handleDeleteAll = (date) => {
         if(window.confirm(`Your list of ${date} will be deleted permanantly.`)) {
