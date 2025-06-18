@@ -1,9 +1,10 @@
 import React, { useContext, useEffect } from 'react'
 import '../styles/todo-list.css'
-import { Backspace, Cactus, FloppyDisk, Pencil, Trash } from 'phosphor-react';
+import { Backspace, FloppyDisk, Pencil, Trash } from 'phosphor-react';
 import { TodoContext } from '../contexts/todo-context';
 import { DateContext } from '../contexts/date-context';
 import DataLoaderCircle from './data-loader';
+import EmptyList from './empty-list';
 
 export const TodoList = () => {
 
@@ -55,10 +56,7 @@ export const TodoList = () => {
                         <div className='deleteAllBttn' onClick={handleDeleteAll}>
                             <Trash size={20} />DELETE ALL
                         </div> : 
-                        <div className='emptyList'>
-                            <Cactus size={20} />
-                            <p>NO PLANS</p>
-                        </div>
+                        <EmptyList />
                     }
                 </> : <DataLoaderCircle /> }
         </div>

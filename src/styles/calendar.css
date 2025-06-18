@@ -27,6 +27,9 @@
     align-items: center;
     font-size: 20px;
 }
+.calendar .month-year svg {
+    cursor: pointer;
+}
 .month-year p {
     width: 180px;
 }

@@ -28,13 +28,14 @@ export const DateContextProvider = (props) => {
 
     const getNextTodoDate = (todosDatesList) => {
         const newDatesList = [...todosDatesList, dateSelected].sort((a,b) => a < b ? -1 : a > b ? 1 : 0);
-        const nextTodoDate = newDatesList.indexOf(dateSelected);
-        if(nextTodoDate === newDatesList.length-1) {
-            return newDatesList[nextTodoDate-1].toDateString();
-        }
-        return newDatesList[nextTodoDate+1].toDateString();
-    }
+        const nextTodoIndex = newDatesList.indexOf(dateSelected);
 
+        console.log(newDatesList);
+        if(nextTodoIndex === newDatesList.length-1) {
+            return newDatesList[nextTodoIndex-1].toDateString();
+        }
+        return newDatesList[nextTodoIndex+1].toDateString();
+    }
 
     const contextValue = { calendarDate, setCalendarDate, dateSelected, setDateSelected, setDayBefore, setNextDay, scrollScreen };
     

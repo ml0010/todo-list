@@ -4,7 +4,7 @@
     justify-content: top;
     align-items: center;
     margin: 25px;
-    border: 3px solid var(--grey);
+    /*border: 3px solid var(--grey);*/
     border-radius: 15px;
     height: 90vh;
 }
@@ -14,6 +14,7 @@
 }
 
 /* buttons */
+
 .todo-box .bttns {
     display: flex;
     align-items:end;
@@ -30,6 +31,8 @@
     border-bottom: none;
     background-color: var(--cream);
     color: var(--dark);
+    cursor: pointer;
+
 }
 .todo-box .bttns .bttn.active {
     background-color: rgba(31, 43, 57, 0.401);;
@@ -70,7 +73,9 @@
     padding-right: 15px;
     width: 200px;
 }
-
+.todo-box .selected-date svg {
+    cursor: pointer;
+}
 /* lists */
 .todo-lists {
     width: 60vw;
