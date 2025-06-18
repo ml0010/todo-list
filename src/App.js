@@ -5,6 +5,7 @@ import Calendar from './pages/calendar';
 import Clock from './pages/clock';
 import Todo from './pages/todo';
 import Weather from './pages/weather';
+import ClickOutside from './components/click-outside';
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
         <div className="App">
             <DateContextProvider>
                 <TodoContextProvider>
+                    <ClickOutside />
                     <div className='pageLeft'>
                         <Clock />
                         <Calendar />

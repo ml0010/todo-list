@@ -6,18 +6,24 @@ import TodoListAll from '../components/todo-list-all';
 import '../styles/todo.css';
 import { CaretDoubleLeft, CaretDoubleRight, ListChecks, Notepad } from 'phosphor-react';
 
-
 export const Todo = () => {
 
     const { dateSelected, setDayBefore, setNextDay } = useContext(DateContext);
     const [ defaultPage, setDefaultPage ] = useState(true);
+
+    const handleClickTodoByDateBttn = () => {
+        setDefaultPage(true);
+    };
+    const handleClickTodoAllBttn = () => {
+        setDefaultPage(false);
+    };
    
     return (
         <div className='todo-box'>
             <h1>To Do List</h1>
             <div className='bttns'>
-                <button onClick={()=>setDefaultPage(true)}><Notepad size={18} />BY DATE</button>
-                <button onClick={()=>setDefaultPage(false)}><ListChecks size={18} />SEE ALL</button>
+                <button onClick={()=>handleClickTodoByDateBttn()}><Notepad size={18} />BY DATE</button>
+                <button onClick={()=>handleClickTodoAllBttn(false)}><ListChecks size={18} />SEE ALL</button>
             </div>
             <div className='selected-date'>
                 <CaretDoubleLeft size={22} onClick={()=>setDayBefore()} />

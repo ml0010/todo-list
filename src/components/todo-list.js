@@ -1,49 +1,23 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import '../styles/todo-list.css'
 import { Backspace, Cactus, FloppyDisk, Pencil, Trash } from 'phosphor-react';
 import { TodoContext } from '../contexts/todo-context';
 import { DateContext } from '../contexts/date-context';
+import DataLoaderCircle from './data-loader';
 
 export const TodoList = () => {
 
-
-    const { todos, getTodoList, editItemId, editText, setEditText, isFetching, setIsFetching, deleteTodo, deleteTodoAll, handleClickCheckbox, handleEdit, handleSubmitEdit, resetEdit} = useContext(TodoContext);
+    const { todos, getTodoList, editItemId, editText, setEditText, isDataFetched, setIsDataFetched, deleteTodo, deleteTodoAll, handleClickCheckbox, handleEdit, handleSubmitEdit, inputRef} = useContext(TodoContext);
     const { dateSelected } = useContext(DateContext);
     
-
     const todoToday = todos.filter((todo) => todo.date === dateSelected.toDateString());
-    
-    useEffect(() => {
-        setTimeout(function () {
-            //console.log("Delayed for 0.2 second."); 
-            setIsFetching(false);
-        }, 200);
-    }, [isFetching, setIsFetching]);
 
     useEffect(() => {
-        setIsFetching(true);
-        getTodoList();
-    }, []);
-
-    const modalRef = useRef();
-    
-    const handleClickOutside = (e) => {
-        console.log('click from list-day');
-        e.stopPropagation();
-        if (modalRef.current && !modalRef.current.contains(e.target)) {
-            resetEdit();
-            console.log(e.target);
+        if(!isDataFetched) {
+            setIsDataFetched(true);
+            getTodoList();
         }
-    };
-
-    useEffect(() => {
-        if (editItemId) {
-            document.addEventListener('mousedown', handleClickOutside);
-        }
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [editItemId]);
+    }, [isDataFetched, setIsDataFetched, getTodoList]);
 
     const handleDeleteAll = () => {
         const date = dateSelected.toDateString();
@@ -54,16 +28,16 @@ export const TodoList = () => {
 
     return (
             <div className='todo-list'> 
-            {!isFetching? 
+            {isDataFetched? 
                 <>
                 {todoToday.map((todo, index) => 
                     <div className='todo' key={index}>
                         <div className='todo-text'>
                             <input className='checkbox' type='checkbox' checked={todo.completed} onChange={()=>handleClickCheckbox(todo)}></input>
-                            <div className='inputbox' ref={modalRef}>
+                            <div className='inputbox'>
                                 {todo._id === editItemId ? 
                                     <form onSubmit={()=>handleSubmitEdit(todo._id)}>
-                                        <input value={editText} onChange={(e)=>setEditText(e.target.value)} maxLength='50' type='text' name='todoEdited' />
+                                        <input ref={inputRef} value={editText} onChange={(e)=>setEditText(e.target.value)} maxLength='50' type='text' name='todoEdited' />
                                     </form> :
                                     <>{todo.todo}</>
                                 }
@@ -86,7 +60,7 @@ export const TodoList = () => {
                             <p>NO PLANS</p>
                         </div>
                     }
-                </> : <div className='loader-wrapper'><div className="loader"></div></div> }
+                </> : <DataLoaderCircle /> }
         </div>
     )
 }

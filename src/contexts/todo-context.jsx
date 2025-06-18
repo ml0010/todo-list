@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useRef, useState } from 'react'
 
 export const TodoContext = createContext(null);
 
@@ -6,7 +6,7 @@ export const TodoContextProvider = (props) => {
 
     const [ todos, setTodos ] = useState([]);
     const [ todoDates, setTodoDates ] = useState([]);
-    const [ isFetching, setIsFetching ] = useState(true);    
+    const [ isDataFetched, setIsDataFetched ] = useState(false);    
     const [ editItemId, setEditItemId ] = useState(null);
     const [ editText, setEditText ] = useState('');
 
@@ -14,8 +14,12 @@ export const TodoContextProvider = (props) => {
         return todo.date;
     }))];
 
+
+    const inputRef = useRef();
+
     const getTodoList = async () => {
-        //console.log("GET TODO LIST");
+        setIsDataFetched(false);
+        console.log("GET TODO LIST");
         try {
             const response = await fetch(`http://localhost:4000/list`, {mode:'cors'});
             const data = await response.json();
@@ -23,6 +27,7 @@ export const TodoContextProvider = (props) => {
                 console.log("No todo list");
             } else {
                 setTodos(()=>[...data]);
+                setIsDataFetched(true);
             }
         }
         catch (err) {
@@ -69,6 +74,7 @@ export const TodoContextProvider = (props) => {
         //console.log("TICK");
         try {
             const response = await fetch(`http://localhost:4000/completed/${id}/true`, {mode:'cors'});
+            await response.json();
             //console.log(response);
             getTodoList();
         }
@@ -80,6 +86,7 @@ export const TodoContextProvider = (props) => {
         //console.log("UNTICK");
         try {
             const response = await fetch(`http://localhost:4000/completed/${id}/false`, {mode:'cors'});
+            await response.json();
             //console.log(response);
             getTodoList();
         }
@@ -96,6 +103,11 @@ export const TodoContextProvider = (props) => {
         }
     };
 
+    const resetEdit = () => {
+        setEditItemId(null);
+        setEditText('');
+    };
+
     const handleEdit = (todo) => {
         setEditItemId(todo._id);
         setEditText(todo.todo);
@@ -106,12 +118,7 @@ export const TodoContextProvider = (props) => {
         resetEdit();
     };
 
-    const resetEdit = () => {
-        setEditItemId(null);
-        setEditText('');
-    };
-
-    const contextValue = { todos, setTodos, todoDates, todosDatesList, setTodoDates, editItemId, setEditItemId, editText, setEditText, isFetching, setIsFetching, getTodoList, deleteTodo, deleteTodoAll, editTodo, handleClickCheckbox, handleEdit, handleSubmitEdit, resetEdit };
+    const contextValue = { todos, setTodos, todoDates, todosDatesList, setTodoDates, inputRef, editItemId, setEditItemId, editText, setEditText, isDataFetched, setIsDataFetched, getTodoList, deleteTodo, deleteTodoAll, editTodo, handleClickCheckbox, handleEdit, handleSubmitEdit, resetEdit };
     
     return (
         <TodoContext.Provider value={contextValue}>{props.children}</TodoContext.Provider>
