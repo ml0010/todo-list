@@ -14,7 +14,7 @@ export const TodoListAll = () => {
 
     useEffect(() => {
         console.log('scroll from the list');
-        scrollScreen(dateSelected);
+        scrollScreen(todoDatesSortedList.map((date) => new Date(date)));
     }, [todos, dateSelected, scrollScreen]);
 
     const handleDeleteAll = (date) => {
