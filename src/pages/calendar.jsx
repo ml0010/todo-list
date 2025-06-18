@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import '../styles/calendar.css'
 import { DateContext } from '../contexts/date-context';
 import { CalendarCheck, CaretDoubleLeft, CaretDoubleRight } from 'phosphor-react';
@@ -9,15 +9,10 @@ export const Calendar = () => {
 
     const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
-    const { calendarDate, setCalendarDate, dateSelected, setDateSelected, scrollScreen } = useContext(DateContext);
-    const { todos, todosDatesList } = useContext(TodoContext);
+    const { calendarDate, setCalendarDate, dateSelected, setDateSelected } = useContext(DateContext);
+    const { todosDatesList } = useContext(TodoContext);
 
     const today = new Date();
-
-    useEffect(() => {
-        console.log('scroll from calendar');
-        scrollScreen(dateSelected);
-    }, [scrollScreen, dateSelected, todos]);
 
     const getDatesRange = (lastDayOfMonth) => {
         const { datesArray } = Array.from({ length: lastDayOfMonth })

@@ -15,7 +15,7 @@ export const TodoListAll = () => {
     useEffect(() => {
         console.log('scroll from the list');
         scrollScreen(dateSelected);
-    }, []);
+    }, [todos, dateSelected, scrollScreen]);
 
     const handleDeleteAll = (date) => {
         if(window.confirm(`Your list of ${date} will be deleted permanantly.`)) {
@@ -32,8 +32,8 @@ export const TodoListAll = () => {
         <div className='todo-list-all'>
             {isDataFetched? <>
                 {todoDatesSortedList.map((date, index) => 
-                <div className='todo-by-date' id={date} key={index} onClick={()=>handleTodoClick(date)}>
-                    <h2>{date}</h2>
+                <div className='todo-by-date' id={date} key={index}>
+                    <h2 onClick={()=>handleTodoClick(date)}>{date}</h2>
                     <div className='deleteAllBttn' onClick={()=>handleDeleteAll(date)}>
                         DELETE ALL<Trash size={16} />
                     </div>

@@ -28,7 +28,12 @@
 }
 
 .todo-list-all h2 {
-    font-size: 18px;
+    font-size: 15px;
+    border-bottom: 1px solid transparent;
+}
+.todo-list-all h2:hover {
+    cursor: pointer;
+    border-bottom: 1px solid var(--cream);
 }
 .todo-list-all .todo {
     background-color: var(--grey);
