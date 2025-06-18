@@ -8,25 +8,56 @@
     border-radius: 15px;
     height: 90vh;
 }
+/* title */
 .todo-box h1 {
     font-size: 20px;
 }
+
+/* buttons */
 .todo-box .bttns {
     display: flex;
-    gap: 50px;
+    align-items:end;
+    gap: 10px;
 }
-.todo-box .bttns button{
+.todo-box .bttns .bttn {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 130px;
+    height: 35px;
+    border-radius: 0px 10px 0px 0px;
+    border: 2px solid var(--grey);
+    border-bottom: none;
+    background-color: var(--cream);
+    color: var(--dark);
 }
-.bttns button svg {
-    padding-right: 3px;
+.todo-box .bttns .bttn.active {
+    background-color: rgba(31, 43, 57, 0.401);;
+    color: var(--cream);
+    height: 40px;
+}
+
+.todo-box .bttns .bttn.inactive {
+    border: none;
 }
 .todo-box .bttns button:hover {
     color: var(--gold);
 }
+.bttns button svg {
+    padding-right: 3px;
+}
 
+/* contents */
+.todo-box .contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(31, 43, 57, 0.401);
+    border: 2px solid var(--grey);
+    border-radius: 15px;
+}
+
+/* selected date */
 .todo-box .selected-date {
     display: flex;
     justify-content: center;
@@ -38,6 +69,13 @@
     padding-left: 15px;
     padding-right: 15px;
     width: 200px;
+}
+
+/* lists */
+.todo-lists {
+    width: 60vw;
+    max-height: 60vh;
+    overflow: auto;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -59,6 +97,9 @@
     .selected-date p {
         font-size: 18px;
         width: 40vw;
+    }
+    .todo-lists {
+        width: 90vw;
     }
 }
 @media only screen and (max-width: 600px) {

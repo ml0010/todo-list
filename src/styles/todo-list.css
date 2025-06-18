@@ -1,6 +1,12 @@
 .todo-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    height: 57vh;
 }
 
+/* todo element */
 .todo-list .todo {
     background-color: var(--grey);
     padding: 10px;
@@ -12,9 +18,9 @@
     justify-content: space-between;
 }
 
-input[type="checkbox"] {
-    width: 1.5em;
-    height: 1.5em;
+.todo-list input[type="checkbox"] {
+    width: 1.4em;
+    height: 1.4em;
     accent-color: var(--grey);
 }
 
@@ -26,11 +32,9 @@ input[type="checkbox"] {
 
 .todo .inputbox {
     text-align: left;
-    padding-left: 5px;
 }
 .todo .inputbox input {
     border: none;
-    width: 33vw;
     height: 25px;
     font-size: 18px;
     background-color: var(--cream);
@@ -47,9 +51,6 @@ input[type="checkbox"] {
     text-decoration: line-through;
     color: grey;
 }
-.todo-list p {
-    color:white;
-}
 
 .deleteAllBttn {
     display: flex;
@@ -59,6 +60,8 @@ input[type="checkbox"] {
     margin-top: 20px;
     cursor: pointer;
 }
+
+/* delete all button */
 .deleteAllBttn:hover {
     color: var(--gold);
 }
@@ -66,6 +69,7 @@ input[type="checkbox"] {
     margin-right: 5px;
 }
 
+/* empty comment */ 
 .emptyList {
     display: flex;
     flex-direction: column;
@@ -102,14 +106,15 @@ input[type="checkbox"] {
         width: 85vw;
     }
     .todo-list .todo {
-        font-size: 14px;
-        width: 78vw;
-        height: 22px;
+        font-size: 15px;
+        width: 76vw;
+        height: 20px;
     }
-    .todo .inputbox input {
-        width: 55vw;
+    .todo-list input[type="checkbox"] {
+        width: 1.2em;
+        height: 1.2em;
+        accent-color: var(--grey);
     }
-
 }
 @media only screen and (max-width: 600px) {
 

@@ -15,8 +15,6 @@
     background-color: var(--dark);
     color: var(--cream);
     height: 100vh;
-    padding-bottom: 50px;
-    overflow: hidden;
 }
 
 .pageLeft {
@@ -25,13 +23,6 @@
 .pageRight {
     width: 70%;
 }
-button {
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
-    color: var(--cream);
-}
-
 
 @media only screen and (max-width: 900px) {
     .App{

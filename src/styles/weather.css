@@ -17,22 +17,22 @@
     font-size: 12px;
 }
 
-.city-info {
+.weather .city-info {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.search {
+.weather .search {
     display: flex;
     flex-direction: row;
     align-items: center;
     height: 30px;
 }
-.searchForm {
+.weather .searchForm {
     position: relative;
 }
-.searchForm .searchResult {
+.weather .searchForm .searchResult {
     position: absolute;
     top: 35px;
     left: 0px;
@@ -40,11 +40,11 @@
     font-size: 13px;
     background-color: var(--cream);
 }
-.searchForm .citySearchResultList {
+.weather .searchForm .citySearchResultList {
     display: block;
     color: var(--dark);
 }
-.searchForm li {
+.weather .searchForm li {
     font-size: 12px;
     border-radius: 0;
     float: left;
@@ -53,10 +53,10 @@
     text-align: left;
     padding-left: 5px;
 }
-.searchForm li:hover {
+.weather .searchForm li:hover {
     color: var(--gold);
 }
-.city-info input {
+.weather .city-info input {
     text-align: center;
     background-color: var(--grey);
     color: var(--ceram);
@@ -65,6 +65,12 @@
     font-size: 18px;
     height: 25px;
     width: 110px;
+}
+.weather button {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    color: var(--cream);
 }
 
 @media only screen and (max-width: 1200px) {

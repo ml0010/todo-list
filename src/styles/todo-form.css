@@ -1,6 +1,5 @@
 .todoForm {
     border-radius: 10px;
-    width: 43vw;
     padding-bottom: 10px;
 }
 .todoForm form {
@@ -9,7 +8,7 @@
     align-items: center;
 }
 .todoForm input {
-    width: 45vw;
+    width: 39vw;
     height: 35px;
     border-radius: 5px;
     border: none;
@@ -17,13 +16,20 @@
 }
 .todoForm button {
     float: right;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    color: var(--cream);
 }
 
-
 @media only screen and (max-width: 900px) {
+    .todoForm {
+        border-radius: 10px;
+        padding-bottom: 10px;
+    }
     .todoForm input {
         font-size: 14px;
-        width: 90vw;
+        width: 73vw;
         height: 30px;
     }
 }

@@ -31,7 +31,30 @@
     width: 180px;
 }
 
-ul, ol {
+.calendar .date {
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+    border: 1px solid transparent;
+}
+.calendar .date:hover {
+    background-color: var(--gold);
+    color: var(--dark);
+}
+
+.calendar .date.selected  {
+    background-color: var(--gold);
+    color: var(--dark);
+}
+.calendar .date.today  {
+    background-color: var(--cream);
+    color: var(--dark);
+}
+.calendar .date.list-yes {
+    border: 1px solid var(--grey);
+}
+
+
+.calendar ul, ol {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-gap: 0.6em;
@@ -40,7 +63,7 @@ ul, ol {
     padding: 0;
 }
 
-li {
+.calendar li {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,32 +76,17 @@ li {
     height: 30px;
 }
 
-.calendar .date {
+.calendar button {
     cursor: pointer;
-    transition: 0.1s ease-in-out;
-    border: 1px solid transparent;
-}
-.calendar .date:hover {
-    background-color: var(--gold);
-    color: var(--dark);
+    border: none;
+    background-color: transparent;
+    color: var(--cream);
 }
 
-.date.selected  {
-    background-color: var(--gold);
-    color: var(--dark);
-}
-.date.today  {
-    background-color: var(--cream);
-    color: var(--dark);
-}
-.date.list-yes {
-    border: 1px solid var(--grey);
-}
-
-ol li:nth-child(7n) {
+.calendar ol li:nth-child(7n) {
     color: var(--red);
 }
-ol li:nth-child(7n-1) {
+.calendar ol li:nth-child(7n-1) {
     color: var(--blue);
 }
 

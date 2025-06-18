@@ -22,24 +22,31 @@ export const Todo = () => {
         <div className='todo-box'>
             <h1>To Do List</h1>
             <div className='bttns'>
-                <button onClick={()=>handleClickTodoByDateBttn()}><Notepad size={18} />BY DATE</button>
-                <button onClick={()=>handleClickTodoAllBttn(false)}><ListChecks size={18} />SEE ALL</button>
+                <button className={`bttn ${defaultPage? 'active' : 'inactive'}`} onClick={(e)=>handleClickTodoByDateBttn()}><Notepad size={18} />BY DATE</button>
+                <button className={`bttn ${!defaultPage? 'active' : 'inactive'}`} onClick={()=>handleClickTodoAllBttn()}><ListChecks size={18} />SEE ALL</button>
             </div>
-            <div className='selected-date'>
-                <CaretDoubleLeft size={22} onClick={()=>setDayBefore()} />
-                <p>{dateSelected.toDateString()}</p>
-                <CaretDoubleRight size={22} onClick={()=>setNextDay()} />
+            <div className='contents'>
+                <div className='selected-date'>
+                    <CaretDoubleLeft size={22} onClick={()=>setDayBefore()} />
+                    <p>{dateSelected.toDateString()}</p>
+                    <CaretDoubleRight size={22} onClick={()=>setNextDay()} />
+                </div>
+                <div className='todo-input'>
+                    <TodoForm />
+                </div>
+                <div className='todo-lists'>
+                    {defaultPage? 
+                    <div className={`todo-list-by-date`}>
+                        <TodoListByDate />
+                    </div>
+                    :
+                    <div className={`todo-list-list-all`}>
+                        <TodoListAll />
+                    </div>}
+                </div>
+                
             </div>
-            <TodoForm />
-            {defaultPage? 
-            <div className={`todo-list-by-date`}>
-                <TodoListByDate />
-            </div>
-            :
-            <div className={`todo-list-list-all`}>
-                <TodoListAll />
-            </div>
-            }
+            
         </div>
     )
 }

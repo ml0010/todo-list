@@ -14,7 +14,6 @@ export const TodoContextProvider = (props) => {
         return todo.date;
     }))];
 
-
     const inputRef = useRef();
 
     const getTodoList = async () => {

@@ -1,8 +1,3 @@
-.todo-list-all {
-    width: 60vw;
-    height: 64vh;
-    overflow: auto;
-}
 .todo-list-all .todo-by-date {
     display: flex;
     flex-direction: column;
@@ -17,9 +12,9 @@
     align-items: center;
     position: absolute;
     top: 0px;
-    right: 9vw;
+    right: 7vw;
     cursor: pointer;
-    font-size: 10px;
+    font-size: 11px;
 }
 
 .deleteAllBttn:hover {
@@ -102,12 +97,9 @@ input[type="checkbox"] {
 }
 
 @media only screen and (max-width: 900px) {
-    .todo-list-all  {
-        width: 85vw;
-    }
     .todo-list-all .todo {
         font-size: 14px;
-        width: 60vw;
+        width: 70vw;
         height: 22px;
     }
     .todo .inputbox input {
