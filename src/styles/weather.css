@@ -44,17 +44,27 @@
     display: block;
     color: var(--dark);
 }
+.weather .searchForm ul {
+    margin: 6px;
+    padding: 0px;
+    max-width: 150px;
+}
 .weather .searchForm li {
-    font-size: 12px;
-    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     float: left;
+    text-align: left;
+    list-style: none;
+    margin-bottom: 8px;
+    font-size: 12px;
     width: auto;
     cursor: pointer;
-    text-align: left;
-    padding-left: 5px;
+    padding: 2px; 
 }
+
 .weather .searchForm li:hover {
-    color: var(--gold);
+    background-color: var(--gold);
 }
 .weather .city-info input {
     text-align: center;

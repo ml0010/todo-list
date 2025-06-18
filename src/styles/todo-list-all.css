@@ -1,3 +1,6 @@
+.todo-list-all {
+    height: 59vh;
+}
 .todo-list-all .todo-by-date {
     display: flex;
     flex-direction: column;

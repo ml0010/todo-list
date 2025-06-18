@@ -101,7 +101,6 @@
     }
     li {
         font-size: calc(13px + (21 - 16) * ((100vw - 300px) / (1600 - 300)));
-
         margin-bottom: 5px;
     }
 }
