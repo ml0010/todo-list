@@ -74,6 +74,7 @@ export const Calendar = () => {
         setCalendarDate(today);
     };
 
+    console.log(today.toDateString());
     return (
         <div className='calendar'>            
             <div>

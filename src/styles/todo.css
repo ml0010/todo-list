@@ -29,14 +29,14 @@
     border-radius: 10px 10px 0px 0px;
     border: 2px solid var(--grey);
     border-bottom: none;
-    background-color: var(--cream);
-    color: var(--dark);
+    background-color: var(--color-foreground);
+    color: var(--color-background);
     cursor: pointer;
 
 }
 .todo-box .bttns .bttn.active {
     background-color: rgba(31, 43, 57, 0.401);;
-    color: var(--cream);
+    color: var(--color-foreground);
     height: 40px;
 }
 

@@ -41,16 +41,16 @@
 }
 .calendar .date:hover {
     background-color: var(--gold);
-    color: var(--dark);
+    color: var(--color-background);
 }
 
 .calendar .date.selected  {
     background-color: var(--gold);
-    color: var(--dark);
+    color: var(--color-backround);
 }
 .calendar .date.today  {
-    background-color: var(--cream);
-    color: var(--dark);
+    background-color: var(--color-foreground);
+    color: var(--color-background);
 }
 .calendar .date.list-yes {
     border: 1px solid var(--grey);
@@ -93,7 +93,7 @@
     cursor: pointer;
     border: none;
     background-color: transparent;
-    color: var(--cream);
+    color: var(--color-foreground);
 }
 
 @media only screen and (max-width: 1200px) {

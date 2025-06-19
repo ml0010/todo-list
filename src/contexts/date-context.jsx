@@ -8,7 +8,7 @@ export const DateContextProvider = (props) => {
     const [ dateSelected, setDateSelected ] = useState(new Date());
 
     const today = new Date();
-    const dayBefore = today.setDate(today.getDate() -1);
+    const dayBefore = new Date().setDate(today.getDate() -1);
 
     const setDayBefore = () => {
         const newDate = new Date(dateSelected.setDate(dateSelected.getDate() - 1));

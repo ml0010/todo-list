@@ -5,7 +5,7 @@
 }
 
 .clock h1 {
-    color: var(--cream);
+    color: var(--color-foreground);
     font-size: 18px;
 }
 

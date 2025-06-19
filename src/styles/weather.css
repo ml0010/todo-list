@@ -39,13 +39,13 @@
     position: absolute;
     top: 35px;
     left: 0px;
-    color: var(--dark);
+    color: var(--color-background);
     font-size: 13px;
-    background-color: var(--cream);
+    background-color: var(--color-foreground);
 }
 .weather .searchForm .citySearchResultList {
     display: block;
-    color: var(--dark);
+    color: var(--color-background);
 }
 .weather .searchForm ul {
     margin: 6px;
@@ -83,7 +83,7 @@
     cursor: pointer;
     border: none;
     background-color: transparent;
-    color: var(--cream);
+    color: var(--color-foreground);
 }
 
 

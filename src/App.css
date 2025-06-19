@@ -1,21 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
+
+    --color-background: var(--cream);
+    --color-foreground: var(--dark);
+    
+    --grey: rgba(137, 138, 138, 0.277);
     --dark: rgb(12, 18, 26);
     --grey: rgba(55, 75, 100, 0.401);
+    --cream: rgb(255, 255, 255);
+
+    /* calendar colors */
     --gold: rgb(246, 192, 32);
-    --cream: rgb(255, 252, 243);
     --red: rgb(255, 128, 128);
     --blue: rgb(151, 165, 255);
 }
+
+[data-theme='dark'] {
+    --color-background: var(--dark);
+    --color-foreground: var(--cream);
+
+}
+
 
 .App {
     font-family: 'Montserrat', 'Helvetica', sans-serif;
     display: flex;
     flex-direction: row;
     text-align: center;
-    background-color: var(--dark);
-    color: var(--cream);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
     height: 100vh;
 }
 

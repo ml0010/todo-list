@@ -19,7 +19,7 @@
     cursor: pointer;
     border: none;
     background-color: transparent;
-    color: var(--cream);
+    color: var(--color-foreground);
 }
 
 @media only screen and (max-width: 900px) {
