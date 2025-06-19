@@ -5,7 +5,7 @@
     align-items: center;
     margin: 25px;
     /*border: 3px solid var(--grey);*/
-    border-radius: 15px;
+    /*border-radius: 15px;*/
     height: 90vh;
 }
 /* title */
@@ -58,6 +58,7 @@
     background-color: rgba(31, 43, 57, 0.401);
     border: 3px solid var(--grey);
     border-radius: 15px;
+    box-shadow: 3px 4px 5px 2px #000000;
 }
 
 /* selected date */

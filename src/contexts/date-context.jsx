@@ -7,6 +7,9 @@ export const DateContextProvider = (props) => {
     const [ calendarDate, setCalendarDate ] = useState(new Date());
     const [ dateSelected, setDateSelected ] = useState(new Date());
 
+    const today = new Date();
+    const dayBefore = today.setDate(today.getDate() -1);
+
     const setDayBefore = () => {
         const newDate = new Date(dateSelected.setDate(dateSelected.getDate() - 1));
         setDateSelected(newDate);
@@ -29,15 +32,14 @@ export const DateContextProvider = (props) => {
     const getNextTodoDate = (todosDatesList) => {
         const newDatesList = [...todosDatesList, dateSelected].sort((a,b) => a < b ? -1 : a > b ? 1 : 0);
         const nextTodoIndex = newDatesList.indexOf(dateSelected);
-
-        console.log(newDatesList);
+        //console.log(newDatesList);
         if(nextTodoIndex === newDatesList.length-1) {
             return newDatesList[nextTodoIndex-1].toDateString();
         }
         return newDatesList[nextTodoIndex+1].toDateString();
     }
 
-    const contextValue = { calendarDate, setCalendarDate, dateSelected, setDateSelected, setDayBefore, setNextDay, scrollScreen };
+    const contextValue = { today, dayBefore, calendarDate, setCalendarDate, dateSelected, setDateSelected, setDayBefore, setNextDay, scrollScreen };
     
     return (
         <DateContext.Provider value={contextValue}>{props.children}</DateContext.Provider>

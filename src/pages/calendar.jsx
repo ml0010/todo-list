@@ -9,10 +9,8 @@ export const Calendar = () => {
 
     const DAYS = ['MON', 'THU', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
 
-    const { calendarDate, setCalendarDate, dateSelected, setDateSelected } = useContext(DateContext);
+    const { today, dayBefore, calendarDate, setCalendarDate, dateSelected, setDateSelected } = useContext(DateContext);
     const { todosDatesList } = useContext(TodoContext);
-
-    const today = new Date();
 
     const getDatesRange = (lastDayOfMonth) => {
         const { datesArray } = Array.from({ length: lastDayOfMonth })
@@ -94,7 +92,12 @@ export const Calendar = () => {
             <ol className='dates'>
                 {getSortedDays().map((date, index) => (
                     <li 
-                        className={`date ${dateSelected.toDateString() === new Date(dateToString(date)).toDateString() ? 'selected' : ''} ${today.toDateString() === new Date(dateToString(date)).toDateString() ? 'today' : ''} ${todosDatesList.includes(new Date(dateToString(date)).toDateString()) ? 'list-yes' : ''}`} 
+                        className={`date 
+                                ${dateSelected.toDateString() === new Date(dateToString(date)).toDateString() ? 'selected' : ''} 
+                                ${today.toDateString() === new Date(dateToString(date)).toDateString() ? 'today' : ''} 
+                                ${todosDatesList.includes(new Date(dateToString(date)).toDateString()) ? 'list-yes' : ''} 
+                                ${dayBefore > new Date(dateToString(date)) ? 'past' : ''}
+                                `} 
                         key={index} 
                         value={date} 
                         onClick={(e)=>handleDateClick(e.target.value)}>

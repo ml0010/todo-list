@@ -1,17 +1,18 @@
 import React, { useContext, useEffect } from 'react'
 import '../styles/todo-list.css'
-import { Backspace, FloppyDisk, Pencil, Trash } from 'phosphor-react';
+import { Trash } from 'phosphor-react';
 import { TodoContext } from '../contexts/todo-context';
 import { DateContext } from '../contexts/date-context';
 import DataLoaderCircle from './data-loader';
 import EmptyList from './empty-list';
+import TodoOutput from './todo-output';
 
 export const TodoList = () => {
 
-    const { todos, getTodoList, editItemId, editText, setEditText, isDataFetched, setIsDataFetched, deleteTodo, deleteTodoAll, handleClickCheckbox, handleEdit, handleSubmitEdit, inputRef} = useContext(TodoContext);
+    const { todos, getTodoList, isDataFetched, setIsDataFetched, deleteTodoAll } = useContext(TodoContext);
     const { dateSelected } = useContext(DateContext);
     
-    const todoToday = todos.filter((todo) => todo.date === dateSelected.toDateString());
+    const todoSelected = todos.filter((todo) => todo.date === dateSelected.toDateString());
 
     useEffect(() => {
         if(!isDataFetched) {
@@ -28,37 +29,18 @@ export const TodoList = () => {
     }
 
     return (
-            <div className='todo-list'> 
+        <div className='todo-list'>
             {isDataFetched? 
                 <>
-                {todoToday.map((todo, index) => 
-                    <div className='todo' key={index}>
-                        <div className='todo-text'>
-                            <input className='checkbox' type='checkbox' checked={todo.completed} onChange={()=>handleClickCheckbox(todo)}></input>
-                            <div className='inputbox'>
-                                {todo._id === editItemId ? 
-                                    <form onSubmit={()=>handleSubmitEdit(todo._id)}>
-                                        <input ref={inputRef} value={editText} onChange={(e)=>setEditText(e.target.value)} maxLength='50' type='text' name='todoEdited' />
-                                    </form> :
-                                    <>{todo.todo}</>
-                                }
-                            </div>
-                        </div>
-                        <div className='todo-actions'>
-                            {todo._id === editItemId ? 
-                                <FloppyDisk size={23} onClick={()=>handleSubmitEdit(todo._id)} /> : 
-                                <Pencil size={23} onClick={()=>handleEdit(todo)} />
-                            }
-                            <Backspace size={23} onClick={()=>deleteTodo(todo._id)} />
-                        </div>
-                    </div>)}
-                    {todoToday.length? 
-                        <div className='deleteAllBttn' onClick={handleDeleteAll}>
-                            <Trash size={20} />DELETE ALL
-                        </div> : 
-                        <EmptyList />
-                    }
-                </> : <DataLoaderCircle /> }
+                {todoSelected.map((todo, index) => <div key={index}><TodoOutput todo={todo} /></div>)}   
+                {todoSelected.length? 
+                    <div className='deleteAllBttn' onClick={handleDeleteAll}>
+                        <Trash size={20} />DELETE ALL
+                    </div> : 
+                    <EmptyList />
+                }
+                </> 
+            : <DataLoaderCircle /> }
         </div>
     )
 }

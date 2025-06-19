@@ -1,24 +1,37 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { TodoContext } from '../contexts/todo-context';
 import { DateContext } from '../contexts/date-context';
 import '../styles/todo-list-all.css'
-import { Backspace, FloppyDisk, Pencil, Trash } from 'phosphor-react';
+import { Trash } from 'phosphor-react';
 import DataLoaderCircle from './data-loader';
 import EmptyList from './empty-list';
+import TodoOutput from './todo-output';
 
 export const TodoListAll = () => {
 
-    const { todos, todosDatesList, editItemId, editText, setEditText, isDataFetched, deleteTodo, deleteTodoAll, handleClickCheckbox, handleEdit, handleSubmitEdit, inputRef } = useContext(TodoContext); 
-    const { dateSelected, setDateSelected, setCalendarDate, scrollScreen } = useContext(DateContext);
+    const { todos, todosDatesList, isDataFetched, deleteTodoAll } = useContext(TodoContext); 
+    const { today, dayBefore, dateSelected, setDateSelected, setCalendarDate, scrollScreen } = useContext(DateContext);
 
-    const todoDatesSortedList = todosDatesList.map((date) => new Date(date)).sort((a,b) => a < b ? -1 : a > b ? 1 : 0).map((date) => date.toDateString());
+    const [ isPastShown, setIsPastShown ] = useState(false);
+
+    const todoDatesSorted = todosDatesList.map((date) => new Date(date)).sort((a,b) => a < b ? -1 : a > b ? 1 : 0);
+    const todoDatesSortedString = todoDatesSorted.map((date) => date.toDateString());
 
     useEffect(() => {
         if(todos.length) {
-            console.log('scroll from the list');
-            scrollScreen(todoDatesSortedList.map((date) => new Date(date)));
+            //console.log('scroll from the list');
+            scrollScreen(todoDatesSorted);
         }
     }, [todos, dateSelected, scrollScreen]);
+
+    useEffect(() => {
+        if(!isPastShown) {
+            if(dateSelected < today) {
+                //console.log('now past is shown');
+                setIsPastShown(true);
+            }
+        }
+    }, [dateSelected]);
 
     const handleDeleteAll = (date) => {
         if(window.confirm(`Your list of ${date} will be deleted permanantly.`)) {
@@ -33,43 +46,25 @@ export const TodoListAll = () => {
 
     return (
         <div className='todo-list-all'>
-            {isDataFetched? <>
-                {todos.length? <>
-                    {todoDatesSortedList.map((date, index) => 
-                    <div className='todo-by-date' id={date} key={index}>
+            {isDataFetched? 
+                <>
+                <button onClick={()=>setIsPastShown(!isPastShown)} className='pastTodoBttn'>{!isPastShown ? 'Open Past' : 'Close Past'}</button>
+                {todos.length? 
+                    <>
+                    {todoDatesSortedString.map((date, index) => 
+                    <div className={`todo-by-date ${dayBefore > todoDatesSorted[index] ? 'past' : ''} ${!isPastShown? 'hidden' : ''}`} id={date} key={index}>
                         <h2 onClick={()=>handleTodoClick(date)}>{date}</h2>
                         <div className='deleteAllBttn' onClick={()=>handleDeleteAll(date)}>
                             DELETE ALL<Trash size={16} />
                         </div>
-                        {todos.map((todo, index) => <>
-                            {date === todo.date ? 
-                            <div className='todo' key={index}>
-                                <div className='todo-text'>
-                                    <input className='checkbox' type='checkbox' checked={todo.completed} onChange={()=>handleClickCheckbox(todo)}></input>
-                                    <div className='inputbox'>
-                                        {todo._id === editItemId ? 
-                                            <form onSubmit={()=>handleSubmitEdit(todo._id)}>
-                                                <input ref={inputRef} value={editText} onChange={(e)=>setEditText(e.target.value)} maxLength='50' type='text' name='todoEdited' />
-                                            </form> :
-                                            <>{todo.todo}</>
-                                        }
-                                    </div>
-                                </div>
-                                <div className='todo-actions'>
-                                    {todo._id === editItemId ? 
-                                        <FloppyDisk size={20} onClick={()=>handleSubmitEdit(todo._id)} /> : 
-                                        <Pencil size={20} onClick={()=>handleEdit(todo)} />
-                                    }
-                                    <Backspace size={20} onClick={()=>deleteTodo(todo._id)} />
-                                </div>
-                            </div>
-                        : <></>}
-                        </>
-                        )}
-                    </div>
-                    )}
-                </> : <EmptyList />}
-            </> : <DataLoaderCircle />}
+                        {todos.map((todo, index) => <div key={index}>
+                        {date === todo.date ? <TodoOutput todo={todo}/> : <></>}
+                        </div>)}
+                    </div>)}
+                    </> 
+                    : <EmptyList />}
+                </> 
+                : <DataLoaderCircle />}
         </div>
     )
 }

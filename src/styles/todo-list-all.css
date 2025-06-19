@@ -9,6 +9,23 @@
     position: relative;
     margin: 10px;
 }
+
+.todo-list-all .pastTodoBttn {
+    width: 180px;
+    border: 2px solid var(--grey);
+    border-radius: 15px;
+    padding: 13px;
+    background-color: transparent;
+    color: var(--cream);
+}
+.todo-list-all .todo-by-date.past {
+    opacity: 0.7;
+}
+
+.todo-list-all .todo-by-date.past.hidden {
+    display: none;
+}
+
 .todo-list-all .deleteAllBttn {
     display: flex;
     justify-content: center;

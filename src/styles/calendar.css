@@ -55,6 +55,9 @@
 .calendar .date.list-yes {
     border: 1px solid var(--grey);
 }
+.calendar .date.past {
+    color: rgb(57, 57, 57);
+}
 
 .calendar ul, ol {
     display: grid;

@@ -6,9 +6,9 @@ import Clock from './pages/clock';
 import Todo from './pages/todo';
 import Weather from './pages/weather';
 import ClickOutside from './components/click-outside';
+import ToggleSwitch from './components/toggle-switch';
 
 function App() {
-
     return (
         <div className="App">
             <DateContextProvider>
@@ -20,6 +20,7 @@ function App() {
                         <Weather />
                     </div>
                     <div className='pageRight'>
+                        <ToggleSwitch label='nightmode' />
                         <Todo />
                     </div>
                 </TodoContextProvider>

@@ -8,18 +8,18 @@
 /* todo element */
 .todo-list .todo {
     background-color: var(--grey);
-    padding: 10px;
+    padding: 7px;
     margin: 5px;
     border-radius: 10px;
-    font-size: 18px;
+    font-size: 17px;
     width: 42vw;
     display: flex;
     justify-content: space-between;
 }
 
 .todo-list input[type="checkbox"] {
-    width: 1.4em;
-    height: 1.4em;
+    width: 1.3em;
+    height: 1.3em;
     accent-color: var(--grey);
 }
 
@@ -35,7 +35,7 @@
 .todo .inputbox input {
     border: none;
     height: 25px;
-    font-size: 18px;
+    font-size: 17px;
     background-color: var(--cream);
 }
 .todo svg {
