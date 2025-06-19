@@ -7,7 +7,7 @@ import { TodoContext } from '../contexts/todo-context';
 
 export const Calendar = () => {
 
-    const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    const DAYS = ['MON', 'THU', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
 
     const { calendarDate, setCalendarDate, dateSelected, setDateSelected } = useContext(DateContext);
     const { todosDatesList } = useContext(TodoContext);

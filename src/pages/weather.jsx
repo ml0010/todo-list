@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
 import '../styles/weather.css'
 import { MagnifyingGlass } from 'phosphor-react';
+import { ICONS } from '../components/weather-icons'
 
 export const Weather = () => {
     const [ location, setLocation ] = useState(''); // save city name, lat, lon value
@@ -109,7 +110,7 @@ export const Weather = () => {
         <div className='weather'>
             {weatherData ? (
             <>
-                <div className='city-info' ref={modalRef}>
+                <div className='weather-title' ref={modalRef}>
                     <div className='search'>
                     {search? 
                         <form onSubmit={handleSubmit} className='searchForm'>
@@ -129,13 +130,13 @@ export const Weather = () => {
                                 </ul> : <></>}
                             </div>
                         </form>
-                     : <h2 onClick={()=>setSearch(true)}>{weatherData.name}, {weatherData.sys.country}</h2>}
+                        : <h2 onClick={()=>setSearch(true)}>{weatherData.name}, {weatherData.sys.country}</h2>}
                         <button type="submit"><MagnifyingGlass size={28} onClick={()=>setSearch(!search)} /></button>
                     </div>
-                    <img className='weatherIcon'src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`} alt={weatherData.weather[0].description} />
-                    {weatherData.weather[0].description}
+                    <img className='weatherIcon'src={ICONS[weatherData.weather[0].icon]} alt={weatherData.weather[0].description} />
                 </div>              
                 <div className='weather-info'>
+                    <h3>{weatherData.weather[0].description}</h3>
                     <p>Temperature: {weatherData.main.temp}°C</p>
                     <p>Feels like : {weatherData.main.feels_like}°C</p>
                     <p>Humidity : {weatherData.main.humidity}%</p>
