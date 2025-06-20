@@ -11,6 +11,7 @@ export const Weather = () => {
     const [ searchInput, setSearchInput ] = useState('');
     const [ geoData, setGeoData] = useState(null); // save geo-data
 
+    setLocation(prev => ({...prev, name: 'Inca', lat: 39.7217, lon: 2.9135}));
     const getInitialLocation = async () => {
         try {
             const response = await axios.get("http://ip-api.com/json");
