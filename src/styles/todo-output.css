@@ -1,0 +1,79 @@
+/* todo-list basic style */
+
+.todo {
+    background-color: var(--color-todo-background);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 42vw;
+    padding: 7px;
+    margin: 5px;
+    font-size: 17px;
+}
+
+.todo .inputbox {
+    text-align: left;
+    padding-left: 5px;
+}
+
+.todo .inputbox input {
+    height: 25px;
+    font-size: 17px;
+    border: none;
+    background-color: var(--cream);
+    width: 33vw;
+}
+
+.todo input[type="checkbox"] {
+    accent-color: var(--color-todo-background);
+}
+
+.todo .todo-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo svg {
+    padding-right: 5px;
+    cursor: pointer;
+}
+
+.todo svg:hover {
+    color: var(--color-highlight);
+}
+
+.todo:has([type=checkbox]:checked) {
+    text-decoration: line-through;
+    color: var(--color-todo-completed);
+}
+
+
+@media only screen and (max-width: 1200px) {
+    .todo .inputbox input {
+        width: 30vw;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .todo {
+        font-size: 15px;
+        width: 76vw;
+        height: 20px;
+    }
+    .todo .inputbox input {
+        width: 55vw;
+    }
+    .todo input[type="checkbox"] {
+        width: 1.2em;
+        height: 1.2em;
+        accent-color: var(--color-todo-background);
+    }    
+}
+@media only screen and (max-width: 600px) {
+
+}
+@media only screen and (min-width: 600px) {
+}
+@media only screen and (min-width: 400px) {
+}

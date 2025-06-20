@@ -5,7 +5,7 @@
     /*border: 3px solid var(--grey);*/
     border-radius: 15px;
     padding: 5px;
-    margin: 30px;
+    margin: 20px;
 }
 .weather h2 {
     text-align: center;
@@ -16,11 +16,11 @@
     font-size: 15px;
 }
 .weather p {
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .weather .weatherIcon {
-    max-width: 170px;
+    max-width: 160px;
 }
 .weather .search {
     display: flex;
@@ -39,7 +39,6 @@
     position: absolute;
     top: 35px;
     left: 0px;
-    color: var(--color-background);
     font-size: 13px;
     background-color: var(--color-foreground);
 }
@@ -67,12 +66,11 @@
 }
 
 .weather .searchForm li:hover {
-    background-color: var(--gold);
+    background-color: var(--color-highlight);
 }
 .weather .weather-title input {
     text-align: center;
-    background-color: var(--grey);
-    color: var(--ceram);
+    background-color: var(--color-font-main);
     border: none;
     border-radius: 5px;
     font-size: 18px;
@@ -85,7 +83,6 @@
     background-color: transparent;
     color: var(--color-foreground);
 }
-
 
 @media only screen and (max-width: 1200px) {
     .weather {

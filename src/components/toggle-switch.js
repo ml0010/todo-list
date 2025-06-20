@@ -1,32 +1,29 @@
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import '../styles/toggle-switch.css'
+import { DarkModeContext } from '../contexts/dark-mode-context';
+import { Moon, Sun } from 'phosphor-react';
 
-const ToggleSwitch = ({ label }) => {
 
-    const [theme, setTheme] = useState('light');
-    
-    const handleChange = (e) => {
-        console.log('mode change');
-        setTheme(e.target.checked ? "dark" : "light");
-    };
+const ToggleSwitch = () => {
 
-    useEffect(() => {
-        document.body.setAttribute("data-theme", theme)
-    }, [theme])
+    const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
 
 	return (
-        <div className="toggle-switch">
-            <input
-                type="checkbox"
-                className="checkbox"
-                name={label}
-                id={label}
-                checked={theme === "dark"}
-                onChange={(e)=>handleChange(e)}
-            />
-            <label className="label" htmlFor={label}>
-                <span className="inner"/>
-                <span className="switch" />
+        <div className='toggle-switch'>
+            <label className='label' htmlFor='toggle'>
+               <div className={`toggle ${darkMode ? "dark-mode" : "light-mode"}`}>
+                    <div className="icons">
+                        <Sun size={24} />
+                        <Moon size={24} />
+                    </div>
+                    <input
+                        id="toggle"
+                        name="toggle"
+                        type="checkbox"
+                        checked={darkMode}
+                        onChange={toggleDarkMode}
+                    />
+                </div>
             </label>
         </div>
 	);

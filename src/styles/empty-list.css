@@ -1,0 +1,6 @@
+.emptyList {
+    color: var(--color-font-main);
+}
+.emptyList p {
+    color: var(--color-font-main);
+}

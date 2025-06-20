@@ -3,9 +3,9 @@
     display: grid;
     grid-template-columns: 1fr;
     justify-content: center;
-    border: 3px solid var(--grey);
+    border: 3px solid var(--color-border);
     border-radius: 15px;
-    margin: 30px;
+    margin: 25px;
 }
 
 .calendar .todayBttn {
@@ -16,7 +16,7 @@
     font-size: 13px;
 }
 .todayBttn:hover {
-    color: var(--gold);
+    color: var(--color-highlight);
 }
 .todayBttn svg {
     margin-right: 3px;
@@ -37,15 +37,15 @@
 .calendar .date {
     cursor: pointer;
     transition: 0.1s ease-in-out;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
 }
 .calendar .date:hover {
-    background-color: var(--gold);
+    background-color: var(--color-highlight);
     color: var(--color-background);
 }
 
 .calendar .date.selected  {
-    background-color: var(--gold);
+    background-color: var(--color-highlight);
     color: var(--color-backround);
 }
 .calendar .date.today  {
@@ -53,10 +53,10 @@
     color: var(--color-background);
 }
 .calendar .date.list-yes {
-    border: 1px solid var(--grey);
+    border: 2px solid var(--color-border);
 }
 .calendar .date.past {
-    color: rgb(57, 57, 57);
+    color: var(--color-date-past);
 }
 
 .calendar ul, ol {
@@ -73,7 +73,7 @@
     justify-content: center;
     list-style: none;
     margin: 0 auto;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
     font-size: calc(12px + (21 - 16) * ((100vw - 300px) / (1600 - 300)));
     border-radius: 20px;
     width: 30px;
@@ -83,10 +83,10 @@
     font-size: calc(9px + (21 - 16) * ((100vw - 300px) / (1600 - 300)));
 }
 .calendar ol li:nth-child(7n) {
-    color: var(--red);
+    color: var(--color-date-sunday);
 }
 .calendar ol li:nth-child(7n-1) {
-    color: var(--blue);
+    color: var(--color-date-saturday);
 }
 
 .calendar button {
@@ -111,7 +111,7 @@
 }
 @media only screen and (max-width: 900px) {
     .calendar {
-        margin: 10px;
+        margin: 25px;
     }
     .calendar .month-year {
         font-size: 18px;
@@ -124,7 +124,9 @@
     }
 }
 @media only screen and (max-width: 600px) {
-    
+    .calendar {
+        margin: 5px;
+    }
 }
 @media only screen and (min-width: 600px) {
 }

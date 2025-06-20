@@ -5,52 +5,7 @@
     height: 59vh;
 }
 
-/* todo element */
-.todo-list .todo {
-    background-color: var(--grey);
-    padding: 7px;
-    margin: 5px;
-    border-radius: 10px;
-    font-size: 17px;
-    width: 42vw;
-    display: flex;
-    justify-content: space-between;
-}
-
-.todo-list input[type="checkbox"] {
-    width: 1.3em;
-    height: 1.3em;
-    accent-color: var(--grey);
-}
-
-.todo-list .todo-text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.todo .inputbox {
-    text-align: left;
-}
-.todo .inputbox input {
-    border: none;
-    height: 25px;
-    font-size: 17px;
-    background-color: var(--color-foreground);
-}
-.todo svg {
-    padding-right: 5px;
-    cursor: pointer;
-}
-.todo svg:hover {
-    color: var(--gold);
-}
-
-.todo:has([type=checkbox]:checked) {
-    text-decoration: line-through;
-    color: grey;
-}
-
+/* delete all button */
 .deleteAllBttn {
     display: flex;
     justify-content: center;
@@ -60,9 +15,8 @@
     cursor: pointer;
 }
 
-/* delete all button */
 .deleteAllBttn:hover {
-    color: var(--gold);
+    color: var(--color-highlight);
 }
 .deleteAllBttn svg {
     margin-right: 5px;
@@ -91,34 +45,4 @@
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-}
-
-
-@media only screen and (max-width: 1200px) {
-    .todo .inputbox input {
-        width: 30vw;
-    }
-}
-
-@media only screen and (max-width: 900px) {
-    .todo-list  {
-        width: 85vw;
-    }
-    .todo-list .todo {
-        font-size: 15px;
-        width: 76vw;
-        height: 20px;
-    }
-    .todo-list input[type="checkbox"] {
-        width: 1.2em;
-        height: 1.2em;
-        accent-color: var(--grey);
-    }
-}
-@media only screen and (max-width: 600px) {
-
-}
-@media only screen and (min-width: 600px) {
-}
-@media only screen and (min-width: 400px) {
 }

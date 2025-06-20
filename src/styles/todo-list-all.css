@@ -12,20 +12,21 @@
 
 .todo-list-all .pastTodoBttn {
     width: 180px;
-    border: 2px solid var(--grey);
+    border: 2px solid var(--color-border);
     border-radius: 15px;
     padding: 13px;
     background-color: transparent;
-    color: var(--color--foreground);
+    color: var(--color-foreground);
 }
 .todo-list-all .todo-by-date.past {
-    opacity: 0.7;
+    opacity: 0.5;
 }
 
 .todo-list-all .todo-by-date.past.hidden {
     display: none;
 }
 
+/* delete all button style */
 .todo-list-all .deleteAllBttn {
     display: flex;
     justify-content: center;
@@ -38,7 +39,7 @@
 }
 
 .deleteAllBttn:hover {
-    color: var(--gold);
+    color: var(--color-highlight);
 }
 .deleteAllBttn svg {
     margin-left: 2px;
@@ -52,56 +53,27 @@
     cursor: pointer;
     border-bottom: 1px solid var(--color-foreground);
 }
+.todo-list p {
+    color:var(--color-font-main);
+}
+
+/* todo list style specific to all list */
 .todo-list-all .todo {
-    background-color: var(--grey);
     padding: 6px;
     margin: 3px;
     border-radius: 8px;
     font-size: 16px;
-    width: 42vw;
-    display: flex;
-    justify-content: space-between;
 }
 
-input[type="checkbox"] {
-  width: 1em;
-  height: 1em;
-  accent-color: var(--grey);
+.todo-list-all input[type="checkbox"] {
+    width: 1em;
+    height: 1em;
 }
 
-.todo-list-all .todo-text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.todo .inputbox {
-    text-align: left;
-    padding-left: 5px;
-}
-.todo .inputbox input {
-    border: none;
-    width: 33vw;
+.todo-list-all .todo .inputbox input {
     height: 18px;
     font-size: 16px;
-    background-color: var(--color-foreground);
 }
-.todo svg {
-    padding-right: 5px;
-    cursor: pointer;
-}
-.todo svg:hover {
-    color: var(--gold);
-}
-
-.todo:has([type=checkbox]:checked) {
-    text-decoration: line-through;
-    color: grey;
-}
-.todo-list p {
-    color:white;
-}
-
 
 /* Safari */
 @-webkit-keyframes spin {
@@ -112,30 +84,4 @@ input[type="checkbox"] {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-}
-
-
-@media only screen and (max-width: 1200px) {
-    .todo .inputbox input {
-        width: 30vw;
-    }
-}
-
-@media only screen and (max-width: 900px) {
-    .todo-list-all .todo {
-        font-size: 14px;
-        width: 70vw;
-        height: 22px;
-    }
-    .todo .inputbox input {
-        width: 55vw;
-    }
-
-}
-@media only screen and (max-width: 600px) {
-
-}
-@media only screen and (min-width: 600px) {
-}
-@media only screen and (min-width: 400px) {
 }

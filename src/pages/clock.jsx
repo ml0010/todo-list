@@ -5,10 +5,17 @@ export const Clock = () => {
 
     const [ date, setDate ] = useState(new Date());
 
+    const addZero = (num) => {
+        if (num < 10) {
+            num = '0' + num;
+        } 
+        return num;
+    };
+
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const showDay = days[date.getDay()];
-    const showDate =  date.getDate() + " / " + (date.getMonth() + 1) + " / " + date.getFullYear();
-    const showTime = date.getHours() + ':'+ date.getMinutes() + ':' + date.getSeconds();
+    const showDate =  addZero(date.getDate()) + "/" + addZero((date.getMonth() + 1)) + "/" + date.getFullYear();
+    const showTime = addZero(date.getHours()) + ':'+ addZero(date.getMinutes()) + ':' + addZero(date.getSeconds());
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -19,8 +26,8 @@ export const Clock = () => {
     
     return (
         <div className='clock'>
-            <h1>{showDay} {showDate}</h1>
-            <h1>{showTime}</h1>
+            <p>{showDay} {showDate}</p>
+            <p>{showTime}</p>
         </div>
     )
 }

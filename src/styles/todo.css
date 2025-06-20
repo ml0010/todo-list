@@ -27,7 +27,7 @@
     width: 130px;
     height: 30px;
     border-radius: 10px 10px 0px 0px;
-    border: 2px solid var(--grey);
+    border: 2px solid var(--color-border);
     border-bottom: none;
     background-color: var(--color-foreground);
     color: var(--color-background);
@@ -35,7 +35,7 @@
 
 }
 .todo-box .bttns .bttn.active {
-    background-color: rgba(31, 43, 57, 0.401);;
+    background-color: var(--color-todo-background);
     color: var(--color-foreground);
     height: 40px;
 }
@@ -44,7 +44,7 @@
     border: none;
 }
 .todo-box .bttns button:hover {
-    color: var(--gold);
+    color: var(--color-highlight);
 }
 .bttns button svg {
     padding-right: 3px;
@@ -55,10 +55,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(31, 43, 57, 0.401);
-    border: 3px solid var(--grey);
+    background-color: var(--color-todo-background);
+    border: 3px solid var(--color-border);
     border-radius: 15px;
-    box-shadow: 3px 4px 5px 2px #000000;
+    box-shadow: 3px 4px 5px 2px var(--color-todo-shadow);
 }
 
 /* selected date */
@@ -69,7 +69,7 @@
 }
 .todo-box .selected-date p {
     font-size: 23px;
-    color: var(--gold);
+    color: var(--color-highlight);
     padding-left: 15px;
     padding-right: 15px;
     width: 200px;

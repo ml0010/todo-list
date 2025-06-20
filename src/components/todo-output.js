@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { TodoContext } from '../contexts/todo-context';
 import { Backspace, FloppyDisk, Pencil } from 'phosphor-react';
+import '../styles/todo-output.css';
 
 function TodoOutput(props) {
 
