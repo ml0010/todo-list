@@ -16,8 +16,10 @@ export const Weather = () => {
             const response = await axios.get("http://ip-api.com/json");
             if (response.status === 200) {
                 setLocation(prev => ({...prev, name: response.data.city, lat: response.data.lat, lon: response.data.lon}));
-                //console.log(response.data);
+                console.log(response.data);
                 //console.log(geoData);
+            } else {
+                setLocation(prev => ({...prev, name: 'Inca', lat: 39.7217, lon: 2.9135}));
             }
         } catch (err) {
             console.log(err);
