@@ -15,7 +15,7 @@ export const TodoForm = (props) => {
 
     const addNewTodo = async (e) => {
         e.preventDefault();
-        let result = await fetch('http://localhost:4000/add', {
+        let result = await fetch('https://todo-list-ksyh.onrender.com/add', {
             method: "post",
             body: JSON.stringify({ todo, date: dateString, completed: false }),
             headers: {
