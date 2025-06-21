@@ -11,9 +11,16 @@ export const Weather = () => {
     const [ searchInput, setSearchInput ] = useState('');
     const [ geoData, setGeoData] = useState(null); // save geo-data
 
+
+    const showPosition = (position) => {
+        return position.coords.latitude;
+    };
+    console.log(navigator.geolocation.getCurrentPosition(showPosition));
+
     const getInitialLocation = async () => {
         try {
             const response = await axios.get("http://ip-api.com/json");
+            //const response = await axios.get("http://freegeoip.net/json");
             if (response.status === 200) {
                 setLocation(prev => ({...prev, name: response.data.city, lat: response.data.lat, lon: response.data.lon}));
                 console.log(response.data);

@@ -32,6 +32,10 @@
 .weather .search svg {
     margin-left: 5px;
 }
+.weather .search .cityInput {
+    border: 1px solid var(--color-foreground);
+    background-color: var(--cream);
+}
 .weather .searchForm {
     position: relative;
 }
