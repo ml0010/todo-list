@@ -13,24 +13,29 @@ export const Weather = () => {
 
 
     const showPosition = (position) => {
-        return position.coords.latitude;
-    };
-    console.log(navigator.geolocation.getCurrentPosition(showPosition));
-
-    const getInitialLocation = async () => {
-        try {
-            const response = await axios.get("http://ip-api.com/json");
-            //const response = await axios.get("http://freegeoip.net/json");
-            if (response.status === 200) {
-                setLocation(prev => ({...prev, name: response.data.city, lat: response.data.lat, lon: response.data.lon}));
-                console.log(response.data);
-                //console.log(geoData);
-            } 
-        } catch (err) {
-            setLocation(prev => ({...prev, name: 'Inca', lat: 39.7217, lon: 2.9135}));
-            console.log(err);
+        console.log(position);
+        if(position) {
+            console.log(position);
+            setLocation(prev => ({...prev, name: '', lat: position.coords.latitude, lon: position.coords.longitude}));
         }
+    };
+    const getInitialLocation = () => {
+        navigator.geolocation.getCurrentPosition(showPosition);
     }
+/*
+    try {
+        const response = await axios.get("http://ip-api.com/json");
+        //const response = await axios.get("http://freegeoip.net/json");
+        if (response.status === 200) {
+            setLocation(prev => ({...prev, name: response.data.city, lat: response.data.lat, lon: response.data.lon}));
+            console.log(response.data);
+            //console.log(geoData);
+        } 
+    } catch (err) {
+        setLocation(prev => ({...prev, name: 'Inca', lat: 39.7217, lon: 2.9135}));
+        console.log(err);
+    }
+*/
     const searchLocation = async () => {
         try {
             const response = await axios.get(`https://geocoding-api.open-meteo.com/v1/search?name=${searchInput}`);
