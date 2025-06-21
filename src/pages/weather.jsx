@@ -13,7 +13,6 @@ export const Weather = () => {
 
 
     const showPosition = (position) => {
-        console.log(position);
         if(position) {
             console.log(position);
             setLocation(prev => ({...prev, name: '', lat: position.coords.latitude, lon: position.coords.longitude}));
@@ -21,7 +20,9 @@ export const Weather = () => {
     };
     const getInitialLocation = () => {
         navigator.geolocation.getCurrentPosition(showPosition);
-    }
+    };
+    const permitLocation = () => {
+    };
 /*
     try {
         const response = await axios.get("http://ip-api.com/json");
@@ -158,7 +159,10 @@ export const Weather = () => {
                 </div>
             </>
             ) : (
-                <p>Loading weather data...</p>
+                <div>
+                    <p>Loading weather data...</p>
+                    <p onClick={permitLocation()}>Allow Location</p>
+                </div>
             )}
         </div>
     )
