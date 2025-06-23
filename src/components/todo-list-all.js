@@ -55,7 +55,7 @@ export const TodoListAll = () => {
                     <div className={`todo-by-date ${dayBefore > todoDatesSorted[index] ? 'past' : ''} ${!isPastShown? 'hidden' : ''}`} id={date} key={index}>
                         <h2 onClick={()=>handleTodoClick(date)}>{date}</h2>
                         <div className='deleteAllBttn' onClick={()=>handleDeleteAll(date)}>
-                            DELETE ALL<Trash size={16} />
+                            <p>DELETE ALL</p><Trash size={16} />
                         </div>
                         {todos.map((todo, index) => <div key={index}>
                         {date === todo.date ? <TodoOutput todo={todo}/> : <></>}

@@ -85,3 +85,41 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+@media only screen and (max-width: 900px) {
+    .todo {
+        font-size: 15px;
+        width: 76vw;
+        height: 20px;
+    }
+    .todo .inputbox input {
+        width: 55vw;
+    }
+    .todo input[type="checkbox"] {
+        width: 1.2em;
+        height: 1.2em;
+        accent-color: var(--color-todo-background);
+    }    
+}
+@media only screen and (max-width: 900px) {
+    .todo-list-all .deleteAllBttn {
+        right: 4vw;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .todo-list-all .deleteAllBttn {
+        right: 2vw;
+    }
+    .todo-list-all .deleteAllBttn p {
+        display: none;
+    }
+    .todo-list-all svg {
+        width: 18px;
+    }
+}
+@media only screen and (min-width: 600px) {
+
+}
+@media only screen and (min-width: 400px) {
+}
