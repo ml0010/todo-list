@@ -29,12 +29,18 @@
     }
     .todoForm input {
         font-size: 14px;
-        width: 73vw;
+        width: 72vw;
         height: 30px;
+    }
+    .todoForm svg {
+        width: 35px;
     }
 }
 @media only screen and (max-width: 600px) {
-
+    .todoForm input {
+        width: 65vw;
+        height: 28px;
+    }
 }
 @media only screen and (min-width: 600px) {
 }

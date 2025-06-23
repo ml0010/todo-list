@@ -32,7 +32,7 @@ export const TodoForm = (props) => {
     return (
         <div className='todoForm'>
             <form onSubmit={addNewTodo}>
-                <input value={todo} onChange={(e)=>setTodo(e.target.value)} type='text' placeholder='Enter a task' maxLength='50' required></input>
+                <input value={todo} onChange={(e)=>setTodo(e.target.value)} type='text' placeholder='Enter a task' maxLength='28' required></input>
                 <button type='submit'><ListPlus size={45} /></button>
             </form>
         </div>

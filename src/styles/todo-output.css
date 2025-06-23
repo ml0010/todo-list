@@ -10,6 +10,7 @@
     margin: 5px;
     font-size: 17px;
 }
+.todo-text p {}
 
 .todo .inputbox {
     text-align: left;
@@ -71,10 +72,8 @@
     }    
 }
 @media only screen and (max-width: 600px) {
-    .todo {
-        font-size: 12px;
-        padding: 4px;
-        margin: 4px;
+    .todo .todo-text .inputbox {
+        font-size: 13px;
     }
 }
 @media only screen and (min-width: 600px) {
