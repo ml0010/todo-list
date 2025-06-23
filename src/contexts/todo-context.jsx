@@ -9,6 +9,8 @@ export const TodoContextProvider = (props) => {
     const [ isDataFetched, setIsDataFetched ] = useState(false);    
     const [ editItemId, setEditItemId ] = useState(null);
     const [ editText, setEditText ] = useState('');
+    const [ search, setSearch ] = useState(false);
+
 
     const todosDatesList = [...new Set(todos.map((todo)=> {
         return todo.date;
@@ -117,7 +119,7 @@ export const TodoContextProvider = (props) => {
         resetEdit();
     };
 
-    const contextValue = { todos, setTodos, todoDates, todosDatesList, setTodoDates, inputRef, editItemId, setEditItemId, editText, setEditText, isDataFetched, setIsDataFetched, getTodoList, deleteTodo, deleteTodoAll, editTodo, handleClickCheckbox, handleEdit, handleSubmitEdit, resetEdit };
+    const contextValue = { todos, setTodos, todoDates, todosDatesList, setTodoDates, inputRef, editItemId, setEditItemId, editText, setEditText, search, setSearch, isDataFetched, setIsDataFetched, getTodoList, deleteTodo, deleteTodoAll, editTodo, handleClickCheckbox, handleEdit, handleSubmitEdit, resetEdit };
     
     return (
         <TodoContext.Provider value={contextValue}>{props.children}</TodoContext.Provider>

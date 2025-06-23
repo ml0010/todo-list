@@ -3,6 +3,7 @@ import { DateContextProvider } from './contexts/date-context';
 import { TodoContextProvider } from './contexts/todo-context';
 import { DarkModeProvider } from './contexts/dark-mode-context'
 import { Container } from './pages/container';
+import { WeatherContextProvider } from './contexts/weather-context';
 
 
 function App() {
@@ -10,9 +11,11 @@ function App() {
         <div className='App'>
             <DateContextProvider>
                 <TodoContextProvider>
-                    <DarkModeProvider>
-                        <Container />
-                    </DarkModeProvider>
+                    <WeatherContextProvider>
+                        <DarkModeProvider>
+                            <Container />
+                        </DarkModeProvider>
+                    </WeatherContextProvider>
                 </TodoContextProvider>
             </DateContextProvider>
         </div>

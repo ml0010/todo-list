@@ -1,11 +1,14 @@
 .weather {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: center;
+
     /*border: 3px solid var(--grey);*/
     border-radius: 15px;
     padding: 5px;
     margin: 20px;
+}
+.weather .result {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
 }
 .weather h2 {
     text-align: center;
@@ -72,7 +75,7 @@
 .weather .searchForm li:hover {
     background-color: var(--color-highlight);
 }
-.weather .weather-title input {
+.weather input {
     text-align: center;
     background-color: var(--color-font-main);
     border: none;
@@ -87,7 +90,11 @@
     background-color: transparent;
     color: var(--color-foreground);
 }
-
+.weather .manual-location {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 @media only screen and (max-width: 1200px) {
     .weather {
         margin: 10px;
