@@ -15,9 +15,10 @@ export const Container = () => {
     return (
         <div className={`container dot ${darkMode? 'dark-mode' : 'light-mode'}`}>
             <ClickOutside />
+            <ToggleSwitch label='nightmode' />
             <div className='pageLeft'>
                 <div className='top'>
-                    <ToggleSwitch label='nightmode' />
+
                     <Clock />
                 </div>
                 <Calendar />

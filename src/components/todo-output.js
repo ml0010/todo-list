@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { TodoContext } from '../contexts/todo-context';
 import { Backspace, FloppyDisk, Pencil } from 'phosphor-react';
 import '../styles/todo-output.css';
@@ -7,6 +7,8 @@ function TodoOutput(props) {
 
     const { editItemId, editText, setEditText, deleteTodo, handleClickCheckbox, handleEdit, handleSubmitEdit, inputRef} = useContext(TodoContext);
     const { todo } = props;
+
+    const [ animationId, setAnimationId ] = useState('');
 
     return (
         <div className='todo'>

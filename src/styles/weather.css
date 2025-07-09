@@ -1,9 +1,7 @@
 .weather {
-
     /*border: 3px solid var(--grey);*/
     border-radius: 15px;
     padding: 5px;
-    margin: 20px;
 }
 .weather .result {
     display: grid;

@@ -1,7 +1,9 @@
 /* todo-list basic style */
 
 .todo {
-    background-color: var(--color-todo-background);
+    background-color: var(--color-background);
+    border: 1px solid rgba(128, 128, 128, 0.26);
+
     border-radius: 10px;
     display: flex;
     justify-content: space-between;
@@ -10,7 +12,6 @@
     margin: 5px;
     font-size: 17px;
 }
-.todo-text p {}
 
 .todo .inputbox {
     text-align: left;

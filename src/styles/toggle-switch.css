@@ -1,9 +1,8 @@
-
 .toggle-switch {
-    position: absolute;
-    right: 5vw;
+    position: fixed;
+    right: 1vw;
+    top: 2vh;
 }
-
 .toggle {
     height: 29px;
     width: 68px;
@@ -51,7 +50,8 @@
 @media only screen and (max-width: 900px) {
 }
 @media only screen and (max-width: 600px) {
-
+    .toggle-switch {
+    }
 }
 @media only screen and (min-width: 600px) {
 }
