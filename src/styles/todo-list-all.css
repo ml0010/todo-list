@@ -11,12 +11,16 @@
 }
 
 .todo-list-all .pastTodoBttn {
-    width: 180px;
-    border: 2px solid var(--color-border);
-    border-radius: 15px;
-    padding: 13px;
-    background-color: transparent;
+    border: none;
+    border-radius: 7px;
+    padding: 8px;
+    background-color: var(--color-background);
     color: var(--color-foreground);
+    cursor: pointer;
+}
+.todo-list-all .pastTodoBttn:hover {
+   color: var(--gold);
+   transition: color 0.5s;
 }
 .todo-list-all .todo-by-date.past {
     opacity: 0.5;

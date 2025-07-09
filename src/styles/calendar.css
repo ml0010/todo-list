@@ -1,11 +1,15 @@
 .calendar {
-    padding: 5px;
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-content: center;
-    border: 3px solid var(--color-border);
+    padding: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
     border-radius: 15px;
     margin: 25px;
+    background-color: var(--color-background);
+    box-shadow: 2px 4px 6px 2px var(--color-todo-shadow);
+    height: 370px;
 }
 
 .calendar .todayBttn {
@@ -98,21 +102,18 @@
 
 @media only screen and (max-width: 1200px) {
     .calendar {
-        margin: 10px;
-        margin-right: 0px;
+        padding: 20px;
+        height: 350px;
     }
     ul, ol {
         grid-gap: 0.3em;
     }
     li {
-        font-size: calc(13px + (21 - 16) * ((100vw - 300px) / (1600 - 300)));
+        font-size: calc(14px + (21 - 16) * ((100vw - 300px) / (1600 - 300)));
         margin-bottom: 5px;
     }
 }
 @media only screen and (max-width: 900px) {
-    .calendar {
-        margin: 25px;
-    }
     .calendar .month-year {
         font-size: 18px;
     }

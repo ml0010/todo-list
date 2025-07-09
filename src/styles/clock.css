@@ -1,7 +1,7 @@
 .clock {
-    margin: 20px;
     /*border: 3px solid var(--grey);*/
     border-radius: 15px;
+    background-color: var(--color-background);
 }
 
 .clock p {

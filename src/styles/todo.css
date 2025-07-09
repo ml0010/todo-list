@@ -27,8 +27,7 @@
     width: 130px;
     height: 30px;
     border-radius: 10px 10px 0px 0px;
-    border: 2px solid var(--color-border);
-    border-bottom: none;
+    border: none;
     background-color: var(--color-foreground);
     color: var(--color-background);
     cursor: pointer;
@@ -45,6 +44,7 @@
 }
 .todo-box .bttns button:hover {
     color: var(--color-highlight);
+    transition: color 0.5s;
 }
 .bttns button svg {
     padding-right: 3px;
@@ -56,7 +56,6 @@
     flex-direction: column;
     align-items: center;
     background-color: var(--color-todo-background);
-    border: 3px solid var(--color-border);
     border-radius: 15px;
     box-shadow: 3px 4px 5px 2px var(--color-todo-shadow);
 }

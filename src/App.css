@@ -1,12 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
 
 .App {
-    font-family: 'Manrope', 'Helvetica', sans-serif;
-}
-
-[data-theme='dark'] {
-    --color-background: var(--dark);
-    --color-foreground: var(--cream);
-
+    font-family: 'Helvetica', sans-serif;
 }

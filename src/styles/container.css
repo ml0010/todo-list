@@ -1,6 +1,5 @@
 
 :root {
-
     --color-background: var(--cream);
     --color-foreground: var(--dark);
     --color-border: var(--grey);
@@ -45,13 +44,31 @@
     --color-background: var(--dark);
     --color-foreground: var(--cream);
     --color-todo-background: var(--blue-transparent);
-    --color-todo-shadow: #000000;
+    --color-todo-shadow: #2a2a2a93;
     --color-date-past: rgb(105, 105, 105);
     --color-font-main: var(--cream);
-    --color-todo-completed: rgb(136, 136, 136);
+    --color-todo-completed: rgba(136, 136, 136, 0.285);
 }
+
+.dot {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    background-image: radial-gradient(#cecece72 1px, transparent 1px);
+    background-size: 16px 16px;
+}
+.dot.dark-mode {
+    background-image: radial-gradient(#cecece17 1px, transparent 1px);
+}
+
 .pageLeft {
+    margin-top: 5px;
     width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .pageRight {
     width: 70%;
